@@ -3,7 +3,6 @@
 import { Moon, Sun, Search, Github, Mail } from "lucide-react";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import DNABackground from "@/components/dna-background";
 
 export default function Home() {
   const [isDark, setIsDark] = useState(false);
@@ -69,8 +68,8 @@ export default function Home() {
       <main className="max-w-7xl mx-auto px-6 pb-12">
         <div className="flex flex-col md:flex-row gap-12">
           {/* Sidebar */}
-          <aside className="w-full md:w-64 flex-shrink-0">
-            <div className="sticky top-24 z-40 py-12 ">
+          <aside className="w-full md:w-64 shrink-0">
+            <div className="sticky top-24 z-40 pt-12 ">
               {/* Profile Image */}
               <div className="mb-8 flex justify-center">
                 <div className="relative">
@@ -114,7 +113,7 @@ export default function Home() {
           </aside>
 
           {/* Main Content Area */}
-          <div className="flex-1 max-w-2xl py-12">
+          <div className="flex-1 max-w-2xl  md:py-12">
             {/* Welcome Section */}
             <section className="mb-12">
               <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-2 text-balance">
@@ -183,24 +182,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 py-8 flex items-center justify-between text-sm text-slate-600 dark:text-slate-400">
           <p>© 2025 Mohamed Yassine Hemissi. All rights reserved.</p>
           <div className="flex gap-6">
-            <a
-              href="/"
-              className="hover:text-slate-900 dark:hover:text-white transition-colors"
-            >
-              Accessibility
-            </a>
-            <a
-              href="/"
-              className="hover:text-slate-900 dark:hover:text-white transition-colors"
-            >
-              Privacy
-            </a>
-            <a
-              href="/"
-              className="hover:text-slate-900 dark:hover:text-white transition-colors"
-            >
-              RSS
-            </a>
+
           </div>
         </div>
       </footer>

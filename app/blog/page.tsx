@@ -90,7 +90,7 @@ function BlogPageContent() {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-6x pb-12">
+      <main className="max-w-7xl mx-auto px-6 pb-12">
         <div className="flex flex-col md:flex-row gap-12">
           {/* Sidebar */}
           <aside className="w-full md:w-64 shrink-0">
@@ -178,15 +178,7 @@ function BlogPageContent() {
         <div className="max-w-7xl mx-auto px-6 py-8 flex items-center justify-between text-sm text-slate-600 dark:text-slate-400">
           <p>© 2025 Mohamed Yassine Hemissi. All rights reserved.</p>
           <div className="flex gap-6">
-            <a href="/" className="hover:text-slate-900 dark:hover:text-white transition-colors">
-              Accessibility
-            </a>
-            <a href="/" className="hover:text-slate-900 dark:hover:text-white transition-colors">
-              Privacy
-            </a>
-            <a href="/" className="hover:text-slate-900 dark:hover:text-white transition-colors">
-              RSS
-            </a>
+
           </div>
         </div>
       </footer>

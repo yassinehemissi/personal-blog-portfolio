@@ -201,15 +201,7 @@ function ProjectsPageContent() {
         <div className="max-w-7xl mx-auto px-6 py-8 flex items-center justify-between text-sm text-slate-600 dark:text-slate-400">
           <p>© 2025 Mohamed Yassine Hemissi. All rights reserved.</p>
           <div className="flex gap-6">
-            <a href="/" className="hover:text-slate-900 dark:hover:text-white transition-colors">
-              Accessibility
-            </a>
-            <a href="/" className="hover:text-slate-900 dark:hover:text-white transition-colors">
-              Privacy
-            </a>
-            <a href="/" className="hover:text-slate-900 dark:hover:text-white transition-colors">
-              RSS
-            </a>
+
           </div>
         </div>
       </footer>
