@@ -1,21 +1,12 @@
 "use client";
 
+import { ThemeContext } from "@/contexts/theme-context";
 import { Moon, Sun, Search } from "lucide-react";
-import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useContext } from "react";
 
 export default function Header() {
-  const [isDark, setIsDark] = useState(false);
-
-  useEffect(() => {
-    const isDarkMode = document.documentElement.classList.contains("dark");
-    setIsDark(isDarkMode);
-  }, []);
-
-  const toggleDarkMode = () => {
-    document.documentElement.classList.toggle("dark");
-    setIsDark(!isDark);
-  };
+  const { isDark, toggleTheme } = useContext(ThemeContext);
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
@@ -44,7 +35,7 @@ export default function Header() {
               Blog
             </Link>
             <button
-              onClick={toggleDarkMode}
+              onClick={toggleTheme}
               className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
               aria-label="Toggle dark mode"
             >

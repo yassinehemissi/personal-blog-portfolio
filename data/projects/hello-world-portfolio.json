@@ -1,0 +1,13 @@
+{
+  "title": "Hello World - My Portfolio Website",
+  "author": "Mohamed Yassine Hemissi",
+  "categories": ["Welcome"],
+  "post_date": "2024-12-24",
+  "update_date": "2024-12-24",
+  "slug": "hello-world-portfolio",
+  "description": "Welcome to my digital space! This portfolio website showcases my journey in AI engineering and software development, built with modern web technologies.",
+  "technologies": ["Javascript"],
+  "year": "2025",
+  "github": "https://github.com/yassinehemissi",
+  "content": "\n\n## Welcome to my digital space! \n\n```javascript\nconsole.log('Hello World!');\n```\n\nThank you for visiting! "
+}
