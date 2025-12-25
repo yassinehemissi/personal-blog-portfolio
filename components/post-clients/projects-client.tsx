@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Link from "next/link";
+import Pagination from "../ui/pagination";
 
 interface Project {
   slug: string;
@@ -23,19 +24,42 @@ interface ProjectsClientProps {
   categories: string[];
 }
 
+const PROJECTS_PER_PAGE = 6;
+
 export default function ProjectsClient({ projects, categories }: ProjectsClientProps) {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
 
   const allCategories = ["All", ...categories];
 
-  const filteredProjects = projects.filter((project) => {
-    const matchesCategory = selectedCategory === "All" || project.categories.includes(selectedCategory);
-    const matchesSearch =
-      project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      project.description.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
+  // Filter projects based on category and search
+  const filteredProjects = useMemo(() => {
+    return projects.filter((project) => {
+      const matchesCategory = selectedCategory === "All" || project.categories.includes(selectedCategory);
+      const matchesSearch =
+        project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        project.description.toLowerCase().includes(searchQuery.toLowerCase());
+      return matchesCategory && matchesSearch;
+    });
+  }, [projects, selectedCategory, searchQuery]);
+
+  // Calculate pagination
+  const totalPages = Math.ceil(filteredProjects.length / PROJECTS_PER_PAGE);
+  const startIndex = (currentPage - 1) * PROJECTS_PER_PAGE;
+  const endIndex = startIndex + PROJECTS_PER_PAGE;
+  const currentProjects = filteredProjects.slice(startIndex, endIndex);
+
+  // Reset to page 1 when filters change
+  const handleCategoryChange = (category: string) => {
+    setSelectedCategory(category);
+    setCurrentPage(1);
+  };
+
+  const handleSearchChange = (query: string) => {
+    setSearchQuery(query);
+    setCurrentPage(1);
+  };
 
   return (
     <div className="max-w-7xl mx-auto px-6 pb-12">
@@ -57,7 +81,7 @@ export default function ProjectsClient({ projects, categories }: ProjectsClientP
                 type="text"
                 placeholder="Search projects..."
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={(e) => handleSearchChange(e.target.value)}
                 className="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600"
               />
             </div>
@@ -71,7 +95,7 @@ export default function ProjectsClient({ projects, categories }: ProjectsClientP
                 {allCategories.map((category) => (
                   <button
                     key={category}
-                    onClick={() => setSelectedCategory(category)}
+                    onClick={() => handleCategoryChange(category)}
                     className={`block w-full text-left px-3 py-2 rounded-lg transition-colors ${
                       selectedCategory === category
                         ? "bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold"
@@ -83,13 +107,22 @@ export default function ProjectsClient({ projects, categories }: ProjectsClientP
                 ))}
               </div>
             </div>
+
+            {/* Results Info */}
+            {filteredProjects.length > 0 && (
+              <div className="mt-8 pt-8 border-t border-slate-200 dark:border-slate-800">
+                <p className="text-sm text-slate-600 dark:text-slate-400">
+                  {filteredProjects.length} project{filteredProjects.length !== 1 ? 's' : ''} found
+                </p>
+              </div>
+            )}
           </div>
         </aside>
 
         {/* Projects Grid */}
         <div className="flex-1 pt-12">
           <div className="space-y-8">
-            {filteredProjects.map((project) => (
+            {currentProjects.map((project) => (
               <div key={project.slug} className="pb-8 border-b border-slate-200 dark:border-slate-800 last:border-b-0">
                 <Link href={`/projects/${project.slug}`} className="group">
                   <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-slate-700 dark:group-hover:text-slate-200 transition-colors">
@@ -153,6 +186,17 @@ export default function ProjectsClient({ projects, categories }: ProjectsClientP
                 No projects found. Try a different search or category.
               </p>
             </div>
+          )}
+
+          {/* Pagination */}
+          {filteredProjects.length > 0 && (
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={setCurrentPage}
+              totalItems={filteredProjects.length}
+              itemsPerPage={PROJECTS_PER_PAGE}
+            />
           )}
         </div>
       </div>

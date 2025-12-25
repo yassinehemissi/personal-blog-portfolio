@@ -45,9 +45,7 @@ export default function Header() {
                 <Moon className="w-5 h-5 text-slate-600" />
               )}
             </button>
-            <button className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
-              <Search className="w-5 h-5 text-slate-600 dark:text-slate-400" />
-            </button>
+           
           </nav>
         </div>
       </div>
