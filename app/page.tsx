@@ -57,7 +57,7 @@ export default function Home() {
                 </a>
               </div>
             </div>
-            {/* Experiences */}
+            {/* Education */}
             <div className="space-y-6">
               <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">
                 Experience
