@@ -29,7 +29,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   };
 
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen bg-white dark:bg-slate-950 text-foreground">
       <article className="max-w-4xl mx-auto px-4 py-16 sm:py-24">
         {/* Header */}
         <header className="mb-12">

@@ -1,11 +1,7 @@
 {
   "title": "Maze Game and Path-Finding with DFS",
   "author": "Mohamed Yassine Hemissi",
-  "categories": [
-    "Academic",
-    "Games",
-	"Open Source"
-  ],
+  "categories": ["Academic/Community", "Creative Lab", "Engineering"],
   "post_date": "2023-04-20",
   "update_date": "2023-04-20",
   "slug": "maze-path-finding-dfs",
