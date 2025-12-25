@@ -1,0 +1,14 @@
+{
+  "title": "Aziz Portfolio Website",
+  "author": "Mohamed Yassine Hemissi",
+  "categories": ["Web Development", "Collaboration"],
+  "post_date": "2023-01-10",
+  "update_date": "2023-01-10",
+  "slug": "aziz-portfolio-website",
+  "description": "Aziz's portfolio website, designed by him and developed by me. We collaborated closely on all projects, combining design and technical implementation over two years.",
+  "technologies": ["Next.js", "React", "Tailwind CSS", "Vercel"],
+  "year": "2024",
+  "github": "",
+  "demo": "https://aziz-portfolio-five.vercel.app/",
+  "content": "This is the portfolio website of my friend and co-partner, Aziz, who has been my designer for over two years. Since we met at the Faculty of Science of Tunis as computer science students, we have collaborated closely, with him handling UI/UX design and me managing the technical implementation.\n\nWe worked hand in hand on almost all of our web/mobile-dev freelance projects, ensuring that each project not only looks visually appealing but is also technically functional and scalable. This collaboration demonstrates how design and technology can complement each other, resulting in polished, interactive, and fully functional web applications.\n\nThe website itself is built using Next.js and React, styled with Tailwind CSS, and deployed on Vercel, offering a live demonstration of our combined work. \n\n ![aziz_portfolio](https://portfoliomyh.b-cdn.net/inventory_plats/chrome_k6RfPTMPTN.png)"
+}

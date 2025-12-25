@@ -1,0 +1,18 @@
+{
+  "title": "Maze Game and Path-Finding with DFS",
+  "author": "Mohamed Yassine Hemissi",
+  "categories": [
+    "Academic",
+    "Games",
+	"Open Source"
+  ],
+  "post_date": "2023-04-20",
+  "update_date": "2023-04-20",
+  "slug": "maze-path-finding-dfs",
+  "description": "A Python project using Pygame to create a maze and implement a Depth-First Search (DFS) algorithm to find a path from the start to the end of the maze. Developed for AI class assignments.",
+  "technologies": ["Python", "Pygame", "AI", "DFS/BFS"],
+  "year": "2021",
+  "github": "https://github.com/yassinehemissi/maze-dfs-path-search/",
+  "demo": "",
+  "content": "This project was developed as part of our AI subject classes, where the task was to construct a maze and implement a path-finding algorithm using Depth-First Search (DFS). The main objective was to navigate from the starting point of the maze to the end point, demonstrating the ability of DFS to traverse a maze structure effectively.\n\nThe project was built using Python with Pygame to create the interactive maze environment and visualize the traversal process. This allowed us to observe the DFS algorithm in action as it explored different paths and backtracked when necessary.\n\n### Demo Images\n ![demo_img_1](https://portfoliomyh.b-cdn.net/python_CMwcw5mkMZ.png)\n ![demo_img_2](https://portfoliomyh.b-cdn.net/python_FUtVuuqUwu.png)"
+}

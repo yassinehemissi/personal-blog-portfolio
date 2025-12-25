@@ -1,0 +1,19 @@
+{
+  "title": "Inventory & Cash Register Management System for Events",
+  "author": "Mohamed Yassine Hemissi",
+  "categories": [ "Freelance", "Web Development"],
+  "post_date": "2022-12-01",
+  "update_date": "2024-12-01",
+  "slug": "inventory-Cash-Register-management-events",
+  "description": "A platform designed to centralize inventory and Cash Register management for small to mid-size events, improving fairness and reducing losses during chaotic event operations.",
+  "technologies": [
+    "Web Development",
+    "Databases",
+    "Event Tech",
+    "Platform Design"
+  ],
+  "year": "2023",
+  "github": "",
+  "demo": "",
+  "content": "After Bubble Fest, we met Mhamed Hssine Fantar who had the same passion for bringing technology into events. Together, we built a platform to centralize inventory and cash register management for small to mid-size events.\n\n## The Problem\n\nRunning an event is chaotic. Money changes hands constantly, inventory gets mixed up between different vendors or stations, and at the end of the day nobody really knows what happened to the cash or the products. There's always mystery around losses or unaccounted gains, and it's hard to run things fairly when everything's scattered.\n\n## What We Built\n\nWe created multiple platform where all event inventories and cash registers are logged in one place. Instead of each vendor or station keeping their own scattered notes, everything gets tracked through a centralized database. You could see ticket sales, merchandise, drink packs, equipment—all in real time.\n\nThe system made it easy to track what was sold, what inventory was used, and how much cash moved through each point. It cut down on confusion and gave organizers actual clarity on what happened during their events.\n\n## Platforms Examples\n\n![Inventory Management Dashboard](https://portfoliomyh.b-cdn.net/inventory_plats/chrome_VetfvBsYuF.jpg)\n\n![Cash Register Interface](https://portfoliomyh.b-cdn.net/inventory_plats/chrome_ZnxKaAitJq.jpg)\n\n![Real-time Tracking & Analytics](https://portfoliomyh.b-cdn.net/inventory_plats/D0EboOcQJa.png)\n\n![Event Overview & Reports](https://portfoliomyh.b-cdn.net/inventory_plats/356460350_258289946904039_2003523805940151602_n.png)\n\n## Conclusion\n\nWe deployed this across more than three events (small/medium sized) and it consistently made operations smoother. Organizers could actually see what was happening, vendors had clear records, and the unfairness and mystery around losses disappeared.\n\n*The friend, co-partner and client's name is **Mhamed Hssine Fantar***"
+}

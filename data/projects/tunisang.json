@@ -1,0 +1,14 @@
+{
+  "title": "Tunisang - Blood Donation Scheduling Website",
+  "author": "Mohamed Yassine Hemissi & Co",
+  "categories": ["Web Development", "Academic"],
+  "post_date": "2023-04-21",
+  "update_date": "2023-04-21",
+  "slug": "tunisang-blood-donation-website",
+  "description": "A React-based frontend project for scheduling blood donation appointments across multiple centers in Tunisia, developed as part of a second-year computer science course.",
+  "technologies": ["React", "Vanilla CSS"],
+  "year": "2021",
+  "github": "https://github.com/yassinehemissi/tunisang",
+  "demo": "https://tunisang.vercel.app/",
+  "content": "Tunisang was developed as part of our second-year computer science front-end web development class. For this project, we were tasked with choosing a website concept and constructing its front-end. We decided to build a platform dedicated to arranging blood donation appointments across multiple centers within Tunisia.\n\nThe website allows users to view donation centers, schedule appointments, and access basic information about each center. The front-end was built using React for interactive UI components, with styling handled via Vanilla CSS. \n\nThe project demonstrates fundamental skills in React component structure, state management, and front-end design. \n\n ![ss](https://portfoliomyh.b-cdn.net/declamatory/AqcQkD7JWx.png) ![ss2](https://portfoliomyh.b-cdn.net/declamatory/JZZI29jhxs.png)"
+}

@@ -1,0 +1,14 @@
+{
+  "title": "Declamatory Clothing Brand & QR Codes",
+  "author": "Mohamed Yassine Hemissi",
+  "categories": ["Entrepreneurship", "Web Development"],
+  "post_date": "2022-11-15",
+  "update_date": "2022-05-15",
+  "slug": "declamatory-clothing-brand",
+  "description": "A digital clothing brand project combining physical apparel with QR codes linking to stories and an online collection inventory system. The project was an innovative approach despite market challenges.",
+  "technologies": ["Web Development", "Inventory Systems", "QR Integration", "Next.js"],
+  "year": "2022",
+  "github": "",
+  "demo": "https://declamatory-website.vercel.app/",
+  "content": "In 2022, a friend and I decided to start a clothing brand driven by our entrepreneurial spirit. We collaborated on ideas and developed a digital approach for the brand, embedding QR codes on the back of our t-shirts. These QR codes directed buyers to the story behind each t-shirt, adding a unique interactive experience.\n\nWe also implemented a collection inventory system on the website, allowing buyers to track and browse available products. Although the business ultimately failed due to the limited market in Tunisia, lack of full dedication from both of us, and differing personal priorities, it was one of the most exciting and creative projects I worked on.\n\nThe project combined **physical products with digital storytelling**, illustrating how technology can enhance traditional business ideas, and provided valuable experience in both e-commerce and interactive design. The website was built using React and deployed on Vercel, offering a functional prototype for the concept.\n\n## Few Images\n\n![Declamatory Homepage](https://portfoliomyh.b-cdn.net/declamatory/chrome_8t6NoLJhuw.png)\n\n![Collection & Inventory System](https://portfoliomyh.b-cdn.net/declamatory/1JhyPVpTD8.png)\n\n![Story Page Experience](https://portfoliomyh.b-cdn.net/declamatory/wHXSGqpa6p.jpg)"
+}

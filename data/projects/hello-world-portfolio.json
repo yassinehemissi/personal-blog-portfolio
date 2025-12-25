@@ -1,13 +1,13 @@
 {
   "title": "Hello World - My Portfolio Website",
   "author": "Mohamed Yassine Hemissi",
-  "categories": ["Welcome"],
-  "post_date": "2024-12-24",
-  "update_date": "2024-12-24",
+  "categories": ["Welcome", "Open Source", "Vibe Coding"],
+  "post_date": "2025-12-24",
+  "update_date": "2025-12-24",
   "slug": "hello-world-portfolio",
-  "description": "Welcome to my digital space! This portfolio website showcases my journey in AI engineering and software development, built with modern web technologies.",
-  "technologies": ["Javascript"],
-  "year": "2025",
-  "github": "https://github.com/yassinehemissi",
-  "content": "\n\n## Welcome to my digital space! \n\n```javascript\nconsole.log('Hello World!');\n```\n\nThank you for visiting! "
+  "description": "Welcome to my digital space! This portfolio website showcases my journey in AI engineering and software development. It was initially designed using Stitch, developed with V0, and then manually refined for full customization.",
+  "technologies": ["Typescript", "Next.js", "Stitch", "V0", "Manual Tweaks"],
+  "year": "2028",
+  "github": "https://github.com/yassinehemissi/personal-blog-portfolio",
+  "content": "This portfolio was initially designed using **Stitch**, then developed using **V0**, and finally manually refined to achieve the final appearance and functionality.\n\n```javascript\nconsole.log('Hello World!');\n```\n\n### Demo Images\n![Stitch Design](https://portfoliomyh.b-cdn.net/chrome_8rbD2U74Gp.png)\n![V0 Development](https://portfoliomyh.b-cdn.net/chrome_JloEOU1Izh.png)\n\nThank you for visiting!"
 }

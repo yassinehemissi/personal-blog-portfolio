@@ -1,0 +1,14 @@
+{
+  "title": "Icha3at! - Rumor Sharing Game",
+  "author": "Mohamed Yassine Hemissi",
+  "categories": ["Web Development", "Games", "Interactive Projects"],
+  "post_date": "2023-11-05",
+  "update_date": "2023-11-05",
+  "slug": "icha3at-rumor-sharing-game",
+  "description": "Icha3at! is a web-based game for sharing rumors among friends and collectively voting on their validity. Designed as a fun, interactive experience within a close circle of friends.",
+  "technologies": ["Next.js", "React", "Web Development", "Vercel"],
+  "year": "2023",
+  "github": "https://github.com/yassinehemissi/Icha3at",
+  "demo": "https://icha3at.vercel.app/",
+  "content": "Icha3at! is a web-based game application built around the idea of sharing rumors among friends and collectively voting on their validity. The project was designed as an interactive experience for a close circle of friends rather than for a production-level launch.\n\nPlayers can submit rumors, read those shared by others, and participate in voting to determine whether the rumor is true or false. The game fosters social interaction and playful engagement while providing a structured way to manage and display shared content.\n\nThe project was developed using Next.js and React, with deployment on Vercel, enabling easy access to the web application. \n\n ![ss](https://camo.githubusercontent.com/238234f9c980a83331bef9cd1c46f078fa030434fb89c59172ebaeef63efdbb6/68747470733a2f2f692e696d6775722e636f6d2f446e73493248742e706e67)"
+}

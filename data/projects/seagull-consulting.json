@@ -1,0 +1,20 @@
+{
+  "title": "Seagull Consulting - Courier Solution",
+  "author": "Mohamed Yassine Hemissi",
+  "categories": ["Freelance", "Web Development", "Enterprise Solutions"],
+  "post_date": "2023-09-10",
+  "update_date": "2023-09-10",
+  "slug": "seagull-courier-solution",
+  "description": "A comprehensive courier management solution for real-time communication between clients, companies, and third-party entities. Developed from scratch as a freelance project.",
+  "technologies": [
+    "Next.js",
+    "React",
+    "Database Design",
+    "Admin Dashboards",
+    "Vercel"
+  ],
+  "year": "2023",
+  "github": "",
+  "demo": "https://seagull-web-client.vercel.app/",
+  "content": "As part of a freelance project, I contributed to building a comprehensive solution for a company innovating in the courier industry. The platform ensures seamless and real-time communication between clients, companies, and third-party entities, whether governmental or private.\n\nMy role included architecting the software, managing its infrastructure, and developing both client-facing and admin-facing components. I designed and maintained the database, implemented a responsive website for clients, and created admin dashboards for monitoring operations. \n\nThe project was built from the ground up with attention to detail, responsiveness, and efficiency, ensuring that all interactions and processes could be tracked in real time. \n\n ![ss](https://portfoliomyh.b-cdn.net/declamatory/oTi8UnNMHT.jpg) \n \n ![ss2](https://portfoliomyh.b-cdn.net/declamatory/Capture.PNG)"
+}

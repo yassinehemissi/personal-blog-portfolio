@@ -1,0 +1,14 @@
+{
+  "title": "Image Uploader",
+  "author": "Mohamed Yassine Hemissi",
+  "categories": ["Open Source", "Web Development"],
+  "post_date": "2022-07-20",
+  "update_date": "2022-07-20",
+  "slug": "image-uploader",
+  "description": "A web application solution for Devchallenges.io that replicates the given design and allows users to upload images. Mimics the primary functions of Imgur, built on an early version of Next.js.",
+  "technologies": ["Next.js", "React", "Tailwind CSS", "Vercel"],
+  "year": "2022",
+  "github": "https://github.com/yassinehemissi/image-uploader",
+  "demo": "https://devchallenges-image-uploader-temp.vercel.app/",
+  "content": "This project is a solution to a Devchallenges.io challenge where the objective was to replicate the given design and implement functional image uploading. It also mimics the main functionalities of Imgur, allowing users to upload and preview images directly.\n\nThe project demonstrates handling of file inputs, dynamic image preview, and image upload processes within a web application. It was built on an early version of Next.js in July 2022, and deployed via Vercel for live demonstration.\n\nKey aspects of the project include:\n- Users can select images from their device and immediately see a preview.\n- Uploaded images are handled efficiently and displayed dynamically on the page.\n- The interface is built with React components for interactive user experience.\n- Tailwind CSS is used to style and structure the interface elements according to the challenge design.\n\nOverall, this project combines design replication with functional image uploading, creating a small-scale Imgur-like experience in a web application. \n\n\n ![demo_image](https://i.imgur.com/vorlyuR.png)"
+}

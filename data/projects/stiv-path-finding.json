@@ -1,0 +1,14 @@
+{
+  "title": "Path Finding API - Dijkstra Algorithm",
+  "author": "Mohamed Yassine Hemissi & Co",
+  "categories": ["Web Development", "Academic", "Algorithms"],
+  "post_date": "2023-05-15",
+  "update_date": "2023-05-15",
+  "slug": "path-finding-api-dijkstra",
+  "description": "A Python API for path finding between cities using the Dijkstra algorithm, including visualizations of the graph before and after finding the optimal path. Part of a larger end-of-year computer science project.",
+  "technologies": ["Python", "Flask", "NetworkX", "Matplotlib"],
+  "year": "2021",
+  "github": "https://github.com/yassinehemissi/pfa-stiv-paths-api",
+  "demo": "https://stiv-projet-pfa-web.vercel.app/",
+  "content": "\n\n## Path Finding API - Dijkstra Algorithm\n\nThis project was developed as part of our second-year computer science end-of-year project. The main focus was to create a Python API capable of determining the optimal path from a starting city to a destination city using the Dijkstra algorithm. The API also provides visualizations of the graph before and after the path finding process, helping users better understand the path and the graph structure.\n\nIt is important to note that this API represents only one part of a larger project, which also includes a web application for clients and a desktop application for administration purposes. The API serves as the backend engine for computing optimal trajectories and generating visual outputs.\n\nThe API was built using Python, leveraging NetworkX for graph management, Matplotlib for graph visualization, and Flask for building the web API. \n\n ![demo_img](https://portfoliomyh.b-cdn.net/declamatory/WYzFy0ZuQs.png)"
+}

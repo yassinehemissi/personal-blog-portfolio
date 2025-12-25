@@ -1,0 +1,13 @@
+{
+  "title": "MTA Discord Webhook Library",
+  "author": "Mohamed Yassine Hemissi",
+  "categories": ["Open Source", "Game Modding", "Libraries"],
+  "post_date": "2020-08-16",
+  "update_date": "2020-08-16",
+  "slug": "mta-discord-webhook-library",
+  "description": "An open-source Lua library for Multi Theft Auto: San Andreas that simplifies sending Discord webhooks directly from in-game events, with both OOP and non-OOP syntax. My first time creating a library, learning that code is just code, not magic, designed to make writing more code easier.",
+  "technologies": ["Lua", "Discord API", "Multi Theft Auto"],
+  "year": "2020",
+  "github": "https://github.com/yassinehemissi/mta-discord-webhook-library",
+  "content": "This project was created in 2020 as a utility library for **Multi Theft Auto: San Andreas (MTA:SA)** scripting using **Lua**.\n\nAt the time, integrating Discord webhooks required manually crafting HTTP requests to the Discord API, which was not as straightforward or well-documented as it is today. This library aimed to **abstract that complexity** and provide a **clean, simple syntax** for developers.\n\nIt supported both **OOP and non-OOP syntax** and was my **first experience creating a library**, helping me understand that programming is not magic, but just code designed to make creating more code easier.\n\n### OOP Example:\n```lua\nlocal myWebhook = Webhook.new(\"Webhook_url\", \"MYH\")\nmyWebhook:setAvatar(\n    \"<image_url>\"\n)\nmyWebhook:setContent(\"My Webhook Library Example.\")\nlocal myWHEmbed = myWebhook:setEmbed(\"My Library's Embed\")\nmyWHEmbed:setColor(\"15281718\")\nmyWHEmbed:setDescription(\"Some Text\")\nmyWHEmbed:setField(\"Some Field\", \"Text\", false)\nmyWHEmbed:setField(\"Some Field\", \"Text\", true)\nmyWHEmbed:setField(\"Some Field\", \"Text\", true)\nmyWHEmbed:setImage(\n    \"<image_url>\"\n)\nmyWebhook:Send(false)\n```\n\n### Non-OOP Example:\n```lua\nlocal myWebhook = Webhook(\"Webhook_url\", \"MYH\")\nmyWebhook = WHSetAvatar(\n    myWebhook,\n    \"<image_url>\"\n)\nmyWebhook = WHSetContent(myWebhook, \"My Webhook Library Example.\")\nmyWebhook = WHSetEmbed(myWebhook, \"My Library's Embed\")\nmyWebhook = WHESetColor(myWebhook, \"15281718\")\nmyWebhook = WHESetField(myWebhook, \"Some Field\", \"Text\", false)\nmyWebhook = WHESetField(myWebhook, \"Some Field\", \"Text\", true)\nmyWebhook = WHESetField(myWebhook, \"Some Field\", \"Text\", true)\nmyWebhook = WHESetImage(\n    myWebhook,\n    \"<image_url>\"\n)\nWHSend(myWebhook, false)\n```\n\nThis library made it easy for developers to **share in-game events to Discord** with just a few lines of Lua code."
+}
