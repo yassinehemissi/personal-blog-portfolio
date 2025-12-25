@@ -1,6 +1,6 @@
 "use client";
 
-import { Github, Mail } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 
 export default function Home() {
   return (
@@ -31,10 +31,11 @@ export default function Home() {
               </p>
 
               {/* Social Links */}
-              <div className="flex gap-3 justify-center">
+              <div className="flex gap-3 justify-center flex-wrap">
                 <a
                   href="https://github.com/yassinehemissi"
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors text-sm font-medium"
+                  target="_blank"
                 >
                   <Github className="w-4 h-4" />
                   GitHub
@@ -46,6 +47,102 @@ export default function Home() {
                   <Mail className="w-4 h-4" />
                   Email
                 </a>
+                <a
+                  href="https://www.linkedin.com/in/mohamed-yassine-hemissi/"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors text-sm font-medium"
+                  target="_blank"
+                >
+                  <Linkedin className="w-4 h-4" />
+                  LinkedIn
+                </a>
+              </div>
+            </div>
+            {/* Experiences */}
+            <div className="space-y-6">
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">
+                Experience
+              </h3>
+              <div className="space-y-4">
+                <div className="border-l-2 border-slate-300 dark:border-slate-600 pl-4">
+                  <h4 className="font-medium text-slate-900 dark:text-white text-sm">
+                    SWE - Freelance
+                    <span className="text-xs text-slate-600 dark:text-slate-400 mb-2">
+                      {" "}
+                      (15+ Clients)
+                    </span>
+                  </h4>
+
+                  <p className="text-xs text-slate-600 dark:text-slate-400 mb-2">
+                    Mar 2022 - Now
+                  </p>
+                </div>
+
+                <div className="border-l-2 border-slate-300 dark:border-slate-600 pl-4">
+                  <h4 className="font-medium text-slate-900 dark:text-white text-sm">
+                    Intern - Artify
+                  </h4>
+                  <p className="text-xs text-slate-600 dark:text-slate-400 mb-2">
+                    Feb 2024 - Aug 2025
+                  </p>
+                </div>
+
+                <div className="border-l-2 border-slate-300 dark:border-slate-600 pl-4">
+                  <h4 className="font-medium text-slate-900 dark:text-white text-sm">
+                    Intern - Sagemcom
+                  </h4>
+                  <p className="text-xs text-slate-600 dark:text-slate-400 mb-2">
+                    Jul 2023 - Aug 2023
+                  </p>
+                </div>
+
+                <div className="border-l-2 border-slate-300 dark:border-slate-600 pl-4">
+                  <h4 className="font-medium text-slate-900 dark:text-white text-sm">
+                    Co-Founder - Bubble Fest
+                  </h4>
+                  <p className="text-xs text-slate-600 dark:text-slate-400 mb-2">
+                    2022 (Freelance)
+                  </p>
+                </div>
+
+                <div className="border-l-2 border-slate-300 dark:border-slate-600 pl-4">
+                  <h4 className="font-medium text-slate-900 dark:text-white text-sm">
+                    Co-Founder - Declamatory
+                  </h4>
+                  <p className="text-xs text-slate-600 dark:text-slate-400 mb-2">
+                    2022 - 2023
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="space-y-6">
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">
+                Education
+              </h3>
+              <div className="space-y-4">
+                <div className="border-l-2 border-slate-300 dark:border-slate-600 pl-4">
+                  <h4 className="font-medium text-slate-900 dark:text-white text-sm">
+                    Eng/Masters - Artificial Intelligence
+                  </h4>
+                  <p className="text-xs font-bold text-slate-600 dark:text-slate-400">
+                    ESPRIT
+                  </p>
+                  <p className="text-xs text-slate-600 dark:text-slate-400 mb-2">
+                    2024 - Now
+                  </p>
+                </div>
+
+                <div className="border-l-2 border-slate-300 dark:border-slate-600 pl-4">
+                  <h4 className="font-medium text-slate-900 dark:text-white text-sm">
+                    Bachelor - Computer Science
+                  </h4>
+
+                  <p className="text-xs font-bold text-slate-600 dark:text-slate-400">
+                    Faculty of Science - Tunis
+                  </p>
+                  <p className="text-xs text-slate-600 dark:text-slate-400 mb-2">
+                    2021-2024
+                  </p>
+                </div>
               </div>
             </div>
           </div>
