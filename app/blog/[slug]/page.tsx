@@ -28,8 +28,8 @@ export default async function BlogPage({ params }: BlogPageProps) {
   };
 
   return (
-    <main className="min-h-screen bg-background text-foreground">
-      <article className="max-w-2xl mx-auto px-4 py-16 sm:py-24">
+    <main className="min-h-screen bg-white dark:bg-slate-950 text-foreground">
+      <article className="max-w-2xl mx-auto px-4 py-16 sm:py-24 bg-white dark:bg-slate-950" >
         {/* Header */}
         <header className="mb-12">
           <Link
