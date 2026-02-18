@@ -161,46 +161,14 @@ export default function Home() {
 
             <div className="space-y-6 text-slate-700 dark:text-slate-300 leading-relaxed">
               <p>
-                I&apos;m a computer science graduate and{" "}
-                <span className="font-semibold text-slate-900 dark:text-white">
-                  AI Engineering student
-                </span>
-                , working at the intersection of software engineering machine
-                learning, data science, and real-world systems.
+                I'm Yassine, a computer science graduate and AI student. I work
+                on building intelligent systems that turn data into useful
+                tools. I'm interested in the intersection of engineering,
+                research, and real-world impact — especially in health and
+                sustainability. Outside of tech, I enjoy learning across
+                disciplines and building ideas into products.
               </p>
-
-              <p>
-                My work focuses on building data-driven and AI-powered
-                platforms, ranging from predictive models in health and
-                environmental domains to scalable web systems and APIs. I care
-                deeply about transforming raw data into clear insight, decision
-                support, and usable tools.
-              </p>
-
-              <p>
-                I&apos;ve worked extensively with Python, JavaScript/TypeScript,
-                SQL, and modern ML frameworks, and I enjoy designing systems
-                that balance theoretical soundness with practical
-                constraints—whether that&apos;s statistical rigor, performance,
-                or deployment reality.
-              </p>
-
-              {/* Quote/Highlight Section */}
-              <div className="border-l-4 border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-900/20 p-6 my-8 italic text-slate-700 dark:text-slate-300">
-                I actively follow and study AI research, with a strong interest
-                in deepening my understanding of modern architectures,
-                optimization methods, and applied AI systems, and I aim to
-                pursue more advanced research and hands-on experimentation in
-                this direction.
-              </div>
-
-              <p>
-                Alongside engineering and research, I&apos;m an entrepreneurship
-                enthusiast, constantly exploring marketing strategies, product
-                positioning, and business ideas. I enjoy thinking about how
-                technology becomes valuable products, not just correct systems.
-              </p>
-
+              <hr/>
               <p>
                 Beyond work, I enjoy exploring across disciplines — from
                 training at the gym and playing tennis to music, where I
