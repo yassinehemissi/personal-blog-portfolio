@@ -11,6 +11,7 @@ interface BlogPost {
   update_date: string;
   excerpt: string;
   readTime: string;
+  cover?: string;
   content: string;
 }
 

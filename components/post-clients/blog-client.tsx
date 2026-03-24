@@ -13,6 +13,7 @@ interface BlogPost {
   update_date: string;
   excerpt: string;
   readTime: string;
+  cover?: string;
   content: string;
 }
 
@@ -129,6 +130,15 @@ export default function BlogClient({ blogPosts, categories }: BlogClientProps) {
           <div className="space-y-8">
             {currentPosts.map((post) => (
               <article key={post.slug} className="pb-8 border-b border-slate-200 dark:border-slate-800 last:border-b-0">
+                {post.cover && (
+                  <Link href={`/blog/${post.slug}`} className="group mb-5 block">
+                    <img
+                      src={post.cover}
+                      alt={post.title}
+                      className="h-52 w-full rounded-2xl object-cover shadow-sm transition-opacity group-hover:opacity-95"
+                    />
+                  </Link>
+                )}
                 <Link href={`/blog/${post.slug}`} className="group">
                   <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-slate-700 dark:group-hover:text-slate-200 transition-colors">
                     {post.title}

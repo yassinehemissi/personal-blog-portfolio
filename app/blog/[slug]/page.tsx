@@ -30,6 +30,13 @@ export default async function BlogPage({ params }: BlogPageProps) {
   return (
     <main className="min-h-screen bg-white dark:bg-slate-950 text-foreground">
       <article className="max-w-2xl mx-auto px-4 py-16 sm:py-24 bg-white dark:bg-slate-950" >
+        {post.cover && (
+          <img
+            src={post.cover}
+            alt={post.title}
+            className="mb-10 h-auto max-h-[420px] w-full rounded-3xl object-cover shadow-lg"
+          />
+        )}
         {/* Header */}
         <header className="mb-12">
           <Link
