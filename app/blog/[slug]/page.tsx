@@ -2,12 +2,21 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MarkdownRenderer } from "@/components/markdown-renderer";
-import { getBlogPost } from "@/lib/getPostData";
+import { getAllBlogPosts, getBlogPost } from "@/lib/getPostData";
 
 interface BlogPageProps {
   params: Promise<{
     slug: string;
   }>;
+}
+
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+  const posts = await getAllBlogPosts();
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
 }
 
 export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {

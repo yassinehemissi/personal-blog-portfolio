@@ -2,13 +2,22 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MarkdownRenderer } from "@/components/markdown-renderer";
-import { getProject } from "@/lib/getPostData";
+import { getAllProjects, getProject } from "@/lib/getPostData";
 import { getFirstMarkdownImage } from "@/lib/seo";
 
 interface ProjectPageProps {
   params: Promise<{
     slug: string;
   }>;
+}
+
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+  const projects = await getAllProjects();
+  return projects.map((project) => ({
+    slug: project.slug,
+  }));
 }
 
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
