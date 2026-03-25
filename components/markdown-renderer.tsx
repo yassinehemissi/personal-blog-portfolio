@@ -112,7 +112,10 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
         </ol>
       ),
       li: ({ children, ...props }: any) => (
-        <li className="mb-1 text-slate-700 dark:text-slate-300 [&_p]:mb-0" {...props}>
+        <li
+          className="mb-1 text-slate-700 dark:text-slate-300 [&_p]:mb-0 [&_p]:inline"
+          {...props}
+        >
           {children}
         </li>
       ),

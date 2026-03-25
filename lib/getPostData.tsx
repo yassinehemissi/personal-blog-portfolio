@@ -27,6 +27,7 @@ interface Project {
   year: string;
   github?: string;
   demo?: string;
+  cover?: string;
   content: string;
 }
 

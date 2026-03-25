@@ -1,13 +1,51 @@
-
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MarkdownRenderer } from "@/components/markdown-renderer";
 import { getProject } from "@/lib/getPostData";
+import { getFirstMarkdownImage } from "@/lib/seo";
 
 interface ProjectPageProps {
   params: Promise<{
     slug: string;
   }>;
+}
+
+export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const project = await getProject(slug);
+
+  if (!project) {
+    return {};
+  }
+
+  const cover = project.cover || getFirstMarkdownImage(project.content);
+  const images = cover ? [{ url: cover, alt: project.title }] : undefined;
+
+  return {
+    title: `${project.title} | Projects`,
+    description: project.description,
+    alternates: {
+      canonical: `/projects/${project.slug}`,
+    },
+    openGraph: {
+      title: project.title,
+      description: project.description,
+      type: "article",
+      url: `/projects/${project.slug}`,
+      publishedTime: project.post_date,
+      modifiedTime: project.update_date,
+      authors: [project.author],
+      tags: project.categories,
+      images,
+    },
+    twitter: {
+      card: images ? "summary_large_image" : "summary",
+      title: project.title,
+      description: project.description,
+      images: cover ? [cover] : undefined,
+    },
+  };
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
