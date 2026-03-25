@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { FileText, Github, Linkedin, Mail } from "lucide-react";
 
 const experience = [
@@ -70,12 +71,21 @@ export default function Home() {
         </p>
         <div className="mx-auto mt-6 max-w-2xl space-y-3 text-pretty text-slate-700 dark:text-slate-300">
           <p>
-            I build intelligent systems and software products that convert data into practical tools.
+            Hi, I'm Yassine.
+            <span className="mx-auto my-2 hidden h-px w-12 bg-slate-300 dark:bg-slate-700 md:block" />
+            {" "}I love, and probably always will love, computer science because it changes lives.
           </p>
           <p>
-            My focus sits at the intersection of engineering, research, and real-world impact in health and sustainability.
+            I'm interested in AI, system design, and research that holds up in practice.
+            <span className="hidden md:block" />
+            {" "}Browse the <Link href="/projects" className="underline underline-offset-4 hover:text-slate-900 dark:hover:text-white">projects</Link> or read the{" "}
+            <Link href="/blog" className="underline underline-offset-4 hover:text-slate-900 dark:hover:text-white">blog</Link>.
           </p>
-          <p>Outside tech, I train, play tennis, and continue to create through music and events.</p>
+          <p>
+            Outside of tech, I care about entrepreneurship, philosophy, and history.
+            <span className="hidden md:block" />
+            {" "}I play tennis, listen to music, and used to host events.
+          </p>
         </div>
 
         <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
