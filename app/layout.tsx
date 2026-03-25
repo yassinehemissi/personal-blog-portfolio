@@ -1,6 +1,7 @@
 import type React from "react";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "../contexts/theme-context";
 import MainLayout from "../components/layouts/main-layout";
@@ -39,6 +40,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`font-sans antialiased`}>
+        <Script
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="34939e4a-2a35-4432-9523-3c67b37d70d4"
+        />
         <ThemeProvider>
           <MainLayout>{children}</MainLayout>
         </ThemeProvider>
