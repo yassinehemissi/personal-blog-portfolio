@@ -9,7 +9,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
   return (
     <div className="min-h-screen bg-white dark:bg-slate-950">
       <Header />
-      <main>{children}</main>
+      <main className="pt-28 md:pt-0">{children}</main>
       <Footer />
     </div>
   );
