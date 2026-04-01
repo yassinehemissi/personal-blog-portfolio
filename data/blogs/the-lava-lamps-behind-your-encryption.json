@@ -4,7 +4,7 @@
   "categories": ["Geek", "Personal"],
   "post_date": "2026-04-01",
   "update_date": "2026-04-01",
-  "slug": "the-lava-lamps-that-secure-the-web",
+  "slug": "the-lava-lamps-behind-your-encryption",
   "excerpt": "A walkthrough of Cloudflare's lava lamp entropy idea, why true randomness matters for encryption, and how I built a visual simulation of the process.",
   "readTime": "9 min read",
   "cover": "https://portfoliomyh.b-cdn.net/LAVALAMPSPIXELART.webp",
