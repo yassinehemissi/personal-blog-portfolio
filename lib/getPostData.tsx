@@ -31,6 +31,18 @@ interface Project {
   content: string;
 }
 
+interface Note {
+  slug: string;
+  title: string;
+  author: string;
+  post_date: string;
+  update_date: string;
+  excerpt: string;
+  readTime: string;
+  cover?: string;
+  content: string;
+}
+
 // Helper function to read JSON files from a directory
 async function readDataFromDirectory<T>(dirPath: string): Promise<T[]> {
   try {
@@ -70,6 +82,21 @@ export const getBlogPost = cache(
   async (slug: string): Promise<BlogPost | null> => {
     const posts = await getAllBlogPosts();
     return posts.find((post) => post.slug === slug) || null;
+  }
+);
+
+// Get all notes (cached for performance)
+export const getAllNotes = cache(async (): Promise<Note[]> => {
+  return (await readDataFromDirectory<Note>("data/notes")).sort(
+    (a, b) => new Date(b.post_date).getTime() - new Date(a.post_date).getTime()
+  );
+});
+
+// Get a specific note by slug
+export const getNote = cache(
+  async (slug: string): Promise<Note | null> => {
+    const notes = await getAllNotes();
+    return notes.find((note) => note.slug === slug) || null;
   }
 );
 

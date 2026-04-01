@@ -1,0 +1,23 @@
+{
+  "title": "AI Teach Me Lava Lamps - Entropy Simulation",
+  "author": "Mohamed Yassine Hemissi",
+  "categories": ["Engineering", "Creative Lab", "Academic/Community"],
+  "post_date": "2026-04-01",
+  "update_date": "2026-04-01",
+  "slug": "ai-teach-me-lava-lamps",
+  "description": "A web simulation inspired by Cloudflare's lava lamp wall, exploring how physical randomness can be transformed into entropy for cryptographic systems.",
+  "technologies": [
+    "Next.js",
+    "Three.js",
+    "React Three Fiber",
+    "LangGraph",
+    "Cloudflare Workers AI",
+    "Cloudflare D1",
+    "Cloudflare Vectorize",
+    "Vercel"
+  ],
+  "year": "2026",
+  "github": "https://github.com/yassinehemissi/cf_ai_teach_me_lavalamps",
+  "demo": "https://ai-teach-me-lavalamps.vercel.app/",
+  "content": "This project was inspired by Cloudflare's lava lamp wall and the idea of using physical randomness as an entropy source for cryptographic systems.\n\n![Lava Lamps Simulation](https://portfoliomyh.b-cdn.net/ai%20teach%20me%20lava%20lamps.gif)\n\n## Concept\n\nThe goal was to build a visual and interactive simulation of the process: lava lamps act as a source of physical entropy, a camera captures their state, and the resulting pixel information can be transformed into a seed for a cryptographic random number pipeline.\n\nAt the center of the project is a simple question: why are computers not enough on their own when high-quality randomness matters for encryption? The project explores that question by contrasting deterministic pseudo-random generation with entropy drawn from real physical systems.\n\n## What I Built\n\nI built two main parts:\n\n- A browser-based lava lamp simulation\n- A frame-to-entropy pipeline that extracts data from rendered scenes\n\nThe simulation approximates lava lamp behavior with a simplified force model instead of full fluid dynamics. It includes:\n\n- Gravity\n- Drag force\n- Temperature gradients, with bottom heating and top cooling\n- Buoyancy force\n- Boundary forces to keep blobs inside the lamp\n\nUsing Newtonian motion and Euler integration, the system updates blob acceleration, velocity, and position over time. To differentiate lamps that would otherwise behave too similarly, I introduced trigonometric oscillations based on lamp IDs.\n\nRendering is handled through marching cubes field composition, which is also the heaviest part of the app computationally.\n\n## Stack\n\n- Next.js\n- Three.js\n- React Three Fiber\n- LangGraph\n- Cloudflare Workers AI\n- Cloudflare D1\n- Cloudflare Vectorize\n- Vercel\n\n## Notes\n\nThis is a simulation and exploration project, not a secure cryptographic product. The generated keys should not be treated as production-safe. The point of the project is educational and visual: showing how chaos in the physical world can feed structured digital systems.\n\nTone, formulation, and text by me, refined with Claude's structural edits."
+}
