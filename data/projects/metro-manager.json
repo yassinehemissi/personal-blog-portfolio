@@ -1,0 +1,19 @@
+{
+  "title": "Metro Manager",
+  "author": "Mohamed Yassine Hemissi",
+  "categories": ["Engineering", "Academic/Community"],
+  "post_date": "2024-10-06",
+  "update_date": "2024-10-06",
+  "slug": "metro-manager",
+  "description": "A first-semester software engineering project built in a team of six around the operations of a metro transit network, from stations and journeys to subscriptions, staff workflows, and complaints.",
+  "technologies": [
+    "Software Engineering",
+    "Team Project",
+    "System Design",
+    "University Project"
+  ],
+  "year": "2024",
+  "github": "https://github.com/yassinehemissi/metro-manager-software-engineering-project/tree/main",
+  "demo": "",
+  "content": "![Metro Manager](https://portfoliomyh.b-cdn.net/Metro%20trakcer.png)\n\nMetro Manager was a university software engineering project completed during the first semester of my engineering year.\n\nI worked on it as part of a team of six, with the goal of designing a coherent system around the day-to-day operations of a metro transit network.\n\n## Scope\n\nThe project was broader than a single dashboard. It was structured around the main parts of a transit system:\n\n- client accounts and ticketing\n- subscriptions and renewals\n- station management\n- metro vehicle tracking\n- journey planning\n- employee administration\n- leave requests\n- complaint handling\n\nWhat made the project meaningful in a university setting was not only the size of the domain, but the need to split responsibilities clearly and keep different parts of the system consistent as a group.\n\n## Why It Matters\n\nThis project pushed us to think in software engineering terms rather than only coding isolated features. We had to work with module boundaries, shared conventions, and a real coordination process between contributors.\n\nIt was one of those projects where the academic side was useful because it forced us to treat organization, maintainability, and team discipline as part of the work itself.\n\n## Repository\n\nThe full repository and implementation details are available on [GitHub](https://github.com/yassinehemissi/metro-manager-software-engineering-project/tree/main)."
+}
