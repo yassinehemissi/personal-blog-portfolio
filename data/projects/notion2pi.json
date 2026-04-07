@@ -1,0 +1,21 @@
+{
+  "title": "Notion2Pi - Abstract Math Visualized",
+  "author": "Mohamed Yassine Hemissi",
+  "categories": ["Engineering", "Creative Lab", "Academic/Community"],
+  "post_date": "2026-01-05",
+  "update_date": "2026-01-05",
+  "slug": "notion2pi",
+  "description": "An AI-assisted web app that turns abstract mathematical notation into more intuitive, multi-perspective learning experiences through a 7-vector analysis framework.",
+  "technologies": [
+    "Next.js",
+    "TypeScript",
+    "Prisma",
+    "Turso",
+    "Zod",
+    "AI Orchestration"
+  ],
+  "year": "2026",
+  "github": "https://github.com/yassinehemissi/notion2pi",
+  "demo": "https://notion2pi.vercel.app",
+  "content": "![Notion2Pi Demo](https://portfoliomyh.b-cdn.net/notion2pidemo.gif)\n\nNotion2Pi is a web application designed to make abstract mathematics feel more intuitive and accessible. The idea was to move beyond dense symbolic notation and turn formulas into something a learner can approach from multiple angles rather than as a single static definition.\n\n## Core Idea\n\nAt the center of the project is a 7-vector analysis framework that looks at a formula through seven dimensions:\n\n- role\n- domain\n- binding\n- variance\n- geometric view\n- invariant properties\n- limiting behavior\n\nInstead of only presenting a formula as text, the system reframes it as a conceptual object that can be explored, interpreted, and visualized.\n\n## What It Does\n\nThe platform includes a formula catalog, dynamic formula pages, and an AI-backed generation layer that helps turn mathematical content into richer educational material.\n\nThe goal was not just to display LaTeX nicely, but to help users understand why a formula exists, what its parts are doing, and how it behaves under change.\n\n## Architecture\n\nThe project was structured as a modern Next.js application with clear separation between UI, business logic, validation, and database concerns. It also includes a flexible orchestration layer for working with multiple AI providers.\n\n## Why It Matters\n\nWhat makes Notion2Pi meaningful to me is that it sits at the intersection of mathematics, pedagogy, and software design. It treats mathematical notation not as something to simplify away, but as something to reinterpret into forms that are easier to reason about.\n\n## Repository\n\nThe implementation details and full README are available on [GitHub](https://github.com/yassinehemissi/notion2pi)."
+}
