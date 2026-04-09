@@ -17,9 +17,25 @@ interface MarkdownRendererProps {
   content: string;
 }
 
-function splitMarkdownAndBlockMath(content: string) {
-  const segments: Array<{ type: "markdown" | "block-math"; value: string }> = [];
-  const pattern = /(\$\$[\s\S]+?\$\$)/g;
+type MarkdownSegment =
+  | { type: "markdown"; value: string }
+  | { type: "block-math"; value: string }
+  | {
+      type: "object";
+      data: string;
+      mimeType: string;
+      width: string;
+      height: string;
+    };
+
+function getHtmlAttribute(tag: string, attribute: string) {
+  const match = tag.match(new RegExp(`${attribute}=["']([^"']+)["']`, "i"));
+  return match?.[1]?.trim() ?? "";
+}
+
+function splitMarkdownAndEmbeds(content: string) {
+  const segments: MarkdownSegment[] = [];
+  const pattern = /(\$\$[\s\S]+?\$\$|<object\b[\s\S]*?<\/object>)/gi;
   let lastIndex = 0;
 
   for (const match of content.matchAll(pattern)) {
@@ -33,10 +49,29 @@ function splitMarkdownAndBlockMath(content: string) {
       });
     }
 
-    segments.push({
-      type: "block-math",
-      value: fullMatch.slice(2, -2).trim(),
-    });
+    if (fullMatch.startsWith("$$")) {
+      segments.push({
+        type: "block-math",
+        value: fullMatch.slice(2, -2).trim(),
+      });
+    } else {
+      const data = getHtmlAttribute(fullMatch, "data");
+
+      if (data && /^(https?:\/\/|\/)/i.test(data)) {
+        segments.push({
+          type: "object",
+          data,
+          mimeType: getHtmlAttribute(fullMatch, "type") || "application/pdf",
+          width: getHtmlAttribute(fullMatch, "width") || "100%",
+          height: getHtmlAttribute(fullMatch, "height") || "720",
+        });
+      } else {
+        segments.push({
+          type: "markdown",
+          value: fullMatch,
+        });
+      }
+    }
 
     lastIndex = matchIndex + fullMatch.length;
   }
@@ -335,7 +370,7 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
 
   return (
     <div className="prose-custom max-w-none">
-      {splitMarkdownAndBlockMath(content).map((segment, index) => {
+      {splitMarkdownAndEmbeds(content).map((segment, index) => {
         if (segment.type === "block-math") {
           return (
             <div
@@ -343,6 +378,36 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
               className="my-4 overflow-x-auto text-slate-700 dark:text-slate-300"
             >
               <BlockMath math={segment.value} />
+            </div>
+          );
+        }
+
+        if (segment.type === "object") {
+          return (
+            <div
+              key={`object-${index}`}
+              className="my-6 overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950"
+            >
+              <object
+                data={segment.data}
+                type={segment.mimeType}
+                width={segment.width}
+                height={segment.height}
+                className="w-full"
+              >
+                <p className="p-4 text-sm text-slate-600 dark:text-slate-400">
+                  PDF preview unavailable.{" "}
+                  <a
+                    href={segment.data}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 dark:text-blue-400 underline"
+                  >
+                    Open the report
+                  </a>
+                  .
+                </p>
+              </object>
             </div>
           );
         }
