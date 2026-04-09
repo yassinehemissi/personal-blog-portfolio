@@ -1,6 +1,6 @@
 {
   "title": "Bookstral - AI Storytelling Studio",
-  "author": "Med",
+  "author": "Mohamed Yassine Hemissi",
   "categories": ["Engineering", "Creative Lab", "Academic/Community"],
   "post_date": "2026-04-01",
   "update_date": "2026-04-01",
@@ -22,5 +22,5 @@
   "year": "2026",
   "github": "https://github.com/yassinehemissi/bookstral",
   "demo": "https://youtu.be/1Vg1Vmymm-4",
-  "content": "![Poster](https://portfoliomyh.b-cdn.net/bookstral/PROJECT.jpeg)\n\nBookstral is an AI-assisted storytelling studio that turns text into scene-based stories with images and narrated audio. It was developed for the Mistral Hackathon 2026.\n\n## Highlights\n- Story planning and scene generation from prompts or documents\n- Image and audio generation per scene with voice selection\n- Studio dashboard for editing and production\n- Player experience for finished stories\n- Marketplace publish, unpublish, and buy flows\n\n## Technologies\n- Next.js (App Router), React, TypeScript\n- Tailwind CSS and shadcn/ui\n- LangChain and LangGraph for AI workflows\n- ElevenLabs for voice synthesis\n- libSQL for persistence\n- NextAuth for authentication\n- UploadThing for file uploads\n\n## Images\n![Landing](https://portfoliomyh.b-cdn.net/bookstral/chrome_qGphcVGtJn.png)\n![Dashboard](https://portfoliomyh.b-cdn.net/bookstral/fFyUuLIR1O.png)\n![Marketplace](https://portfoliomyh.b-cdn.net/bookstral/cRAOLCjApn.png)\n![Player](https://portfoliomyh.b-cdn.net/bookstral/VNrDb6zlAO.jpg)\n![Player 2](https://portfoliomyh.b-cdn.net/bookstral/chrome_Tb3Bzg3oWU.png)\n\n## Repository\nAuthor: Med\nWeb app: web/"
+  "content": "![Poster](https://portfoliomyh.b-cdn.net/bookstral/PROJECT.jpeg)\n\nBookstral is an AI-assisted storytelling studio that turns text into scene-based stories with images and narrated audio. It was developed for the Mistral Hackathon 2026.\n\n## Highlights\n- Story planning and scene generation from prompts or documents\n- Image and audio generation per scene with voice selection\n- Studio dashboard for editing and production\n- Player experience for finished stories\n- Marketplace publish, unpublish, and buy flows\n\n## Technologies\n- Next.js (App Router), React, TypeScript\n- Tailwind CSS and shadcn/ui\n- LangChain and LangGraph for AI workflows\n- ElevenLabs for voice synthesis\n- libSQL for persistence\n- NextAuth for authentication\n- UploadThing for file uploads\n\n## Images\n![Landing](https://portfoliomyh.b-cdn.net/bookstral/chrome_qGphcVGtJn.png)\n![Dashboard](https://portfoliomyh.b-cdn.net/bookstral/fFyUuLIR1O.png)\n![Marketplace](https://portfoliomyh.b-cdn.net/bookstral/cRAOLCjApn.png)\n![Player](https://portfoliomyh.b-cdn.net/bookstral/VNrDb6zlAO.jpg)\n![Player 2](https://portfoliomyh.b-cdn.net/bookstral/chrome_Tb3Bzg3oWU.png)\n\n## Repository\nAuthor: Mohamed Yassine Hemissi\nWeb app: web/"
 }

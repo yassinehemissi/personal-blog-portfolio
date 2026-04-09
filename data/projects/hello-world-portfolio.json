@@ -7,7 +7,7 @@
   "slug": "hello-world-portfolio",
   "description": "Welcome to my digital space! This portfolio website showcases my journey in AI engineering and software development. It was initially designed using Stitch, developed with V0, and then manually refined for full customization.",
   "technologies": ["Typescript", "Next.js", "Stitch", "V0", "Manual Tweaks"],
-  "year": "2028",
+  "year": "2026",
   "github": "https://github.com/yassinehemissi/personal-blog-portfolio",
   "content": "This portfolio was initially designed using **Stitch**, then developed using **V0**, and finally manually refined to achieve the final appearance and functionality.\n\n```javascript\nconsole.log('Hello World!');\n```\n\n### Demo Images\n![Stitch Design](https://portfoliomyh.b-cdn.net/chrome_8rbD2U74Gp.png)\n![V0 Development](https://portfoliomyh.b-cdn.net/chrome_JloEOU1Izh.png)\n\nThank you for visiting!"
 }
