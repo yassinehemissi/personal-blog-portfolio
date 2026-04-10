@@ -20,6 +20,7 @@ interface Project {
   title: string;
   author: string;
   categories: string[];
+  tier?: "Flagship" | "Strong" | "Early Work";
   post_date: string;
   update_date: string;
   description: string;

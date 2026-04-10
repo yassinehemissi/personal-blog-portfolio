@@ -5,6 +5,19 @@ import { MarkdownRenderer } from "@/components/markdown-renderer";
 import { getAllProjects, getProject } from "@/lib/getPostData";
 import { getFirstMarkdownImage } from "@/lib/seo";
 
+function getTierClasses(tier?: string) {
+  switch (tier) {
+    case "Flagship":
+      return "border border-amber-300/70 bg-gradient-to-r from-amber-100 via-orange-100 to-rose-100 text-amber-900 dark:border-amber-500/30 dark:from-amber-500/20 dark:via-orange-500/15 dark:to-rose-500/20 dark:text-amber-100";
+    case "Strong":
+      return "border border-sky-300/70 bg-gradient-to-r from-sky-100 via-cyan-100 to-teal-100 text-sky-900 dark:border-sky-500/30 dark:from-sky-500/20 dark:via-cyan-500/15 dark:to-teal-500/20 dark:text-sky-100";
+    case "Early Work":
+      return "border border-violet-300/70 bg-gradient-to-r from-violet-100 via-fuchsia-100 to-pink-100 text-violet-900 dark:border-violet-500/30 dark:from-violet-500/20 dark:via-fuchsia-500/15 dark:to-pink-500/20 dark:text-violet-100";
+    default:
+      return "";
+  }
+}
+
 interface ProjectPageProps {
   params: Promise<{
     slug: string;
@@ -89,6 +102,15 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-balance">
             {project.title}
           </h1>
+          {project.tier && (
+            <div className="mb-4">
+              <span
+                className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold tracking-[0.14em] uppercase ${getTierClasses(project.tier)}`}
+              >
+                {project.tier}
+              </span>
+            </div>
+          )}
           <p className="text-xl text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
             {project.description}
           </p>

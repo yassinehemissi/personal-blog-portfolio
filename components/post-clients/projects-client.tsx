@@ -9,6 +9,7 @@ interface Project {
   title: string;
   author: string;
   categories: string[];
+  tier?: "Flagship" | "Strong" | "Early Work";
   post_date: string;
   update_date: string;
   description: string;
@@ -25,24 +26,41 @@ interface ProjectsClientProps {
 }
 
 const PROJECTS_PER_PAGE = 6;
+const TIER_ORDER = ["Flagship", "Strong", "Early Work"] as const;
+
+function getTierClasses(tier: Project["tier"]) {
+  switch (tier) {
+    case "Flagship":
+      return "border border-amber-300/70 bg-gradient-to-r from-amber-100 via-orange-100 to-rose-100 text-amber-900 dark:border-amber-500/30 dark:from-amber-500/20 dark:via-orange-500/15 dark:to-rose-500/20 dark:text-amber-100";
+    case "Strong":
+      return "border border-sky-300/70 bg-gradient-to-r from-sky-100 via-cyan-100 to-teal-100 text-sky-900 dark:border-sky-500/30 dark:from-sky-500/20 dark:via-cyan-500/15 dark:to-teal-500/20 dark:text-sky-100";
+    case "Early Work":
+      return "border border-violet-300/70 bg-gradient-to-r from-violet-100 via-fuchsia-100 to-pink-100 text-violet-900 dark:border-violet-500/30 dark:from-violet-500/20 dark:via-fuchsia-500/15 dark:to-pink-500/20 dark:text-violet-100";
+    default:
+      return "";
+  }
+}
 
 export default function ProjectsClient({ projects, categories }: ProjectsClientProps) {
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedTier, setSelectedTier] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
 
   const allCategories = ["All", ...categories];
+  const allTiers = ["All", ...TIER_ORDER.filter((tier) => projects.some((project) => project.tier === tier))];
 
   // Filter projects based on category and search
   const filteredProjects = useMemo(() => {
     return projects.filter((project) => {
       const matchesCategory = selectedCategory === "All" || project.categories.includes(selectedCategory);
+      const matchesTier = selectedTier === "All" || project.tier === selectedTier;
       const matchesSearch =
         project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         project.description.toLowerCase().includes(searchQuery.toLowerCase());
-      return matchesCategory && matchesSearch;
+      return matchesCategory && matchesTier && matchesSearch;
     });
-  }, [projects, selectedCategory, searchQuery]);
+  }, [projects, selectedCategory, selectedTier, searchQuery]);
 
   // Calculate pagination
   const totalPages = Math.ceil(filteredProjects.length / PROJECTS_PER_PAGE);
@@ -58,6 +76,11 @@ export default function ProjectsClient({ projects, categories }: ProjectsClientP
 
   const handleSearchChange = (query: string) => {
     setSearchQuery(query);
+    setCurrentPage(1);
+  };
+
+  const handleTierChange = (tier: string) => {
+    setSelectedTier(tier);
     setCurrentPage(1);
   };
 
@@ -87,7 +110,7 @@ export default function ProjectsClient({ projects, categories }: ProjectsClientP
             </div>
 
             {/* Categories */}
-            <div>
+            <div className="mb-8">
               <h3 className="text-sm font-semibold text-slate-900 dark:text-white uppercase tracking-wide mb-4">
                 Categories
               </h3>
@@ -121,13 +144,55 @@ export default function ProjectsClient({ projects, categories }: ProjectsClientP
 
         {/* Projects Grid */}
         <div className="flex-1 pt-12">
+          <div className="mb-8">
+            <div className="mb-4 flex items-center justify-between gap-4">
+              <h3 className="text-sm font-semibold text-slate-900 dark:text-white uppercase tracking-wide">
+                Project Tiers
+              </h3>
+              {selectedTier !== "All" && (
+                <button
+                  onClick={() => handleTierChange("All")}
+                  className="text-xs font-medium text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors"
+                >
+                  Clear filter
+                </button>
+              )}
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {allTiers.map((tier) => (
+                <button
+                  key={tier}
+                  onClick={() => handleTierChange(tier)}
+                  className={`rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${
+                    selectedTier === tier
+                      ? tier === "All"
+                        ? "bg-slate-900 dark:bg-white text-white dark:text-slate-900"
+                        : getTierClasses(tier)
+                      : "border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-300 dark:hover:bg-slate-900"
+                  }`}
+                >
+                  {tier}
+                </button>
+              ))}
+            </div>
+          </div>
+
           <div className="space-y-8">
             {currentProjects.map((project) => (
               <div key={project.slug} className="pb-8 border-b border-slate-200 dark:border-slate-800 last:border-b-0">
                 <Link href={`/projects/${project.slug}`} className="group">
-                  <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-slate-700 dark:group-hover:text-slate-200 transition-colors">
-                    {project.title}
-                  </h2>
+                  <div className="mb-3 flex flex-wrap items-start gap-3">
+                    <h2 className="text-2xl font-bold text-slate-900 dark:text-white group-hover:text-slate-700 dark:group-hover:text-slate-200 transition-colors">
+                      {project.title}
+                    </h2>
+                    {project.tier && (
+                      <span
+                        className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold tracking-[0.14em] uppercase ${getTierClasses(project.tier)}`}
+                      >
+                        {project.tier}
+                      </span>
+                    )}
+                  </div>
                 </Link>
 
                 <p className="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">{project.description}</p>
