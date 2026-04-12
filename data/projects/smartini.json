@@ -1,0 +1,22 @@
+{
+  "title": "Smartini: SME Marketing & Sales - Lunar Hackathon 2026",
+  "author": "Mohamed Yassine Hemissi",
+  "categories": ["Engineering", "Creative Lab", "Academic/Community"],
+  "tier": "Flagship",
+  "post_date": "2026-04-12",
+  "update_date": "2026-04-12",
+  "slug": "smartini",
+  "description": "A business operating layer for SMEs that connects onboarding, products, uploaded company knowledge, marketing generation, analytics, and deployable AI sales agents inside one platform.",
+  "technologies": [
+    "Next.js",
+    "Flask",
+    "FastAPI",
+    "LangGraph",
+    "MongoDB",
+    "AI Sales Agents"
+  ],
+  "year": "2026",
+  "github": "https://github.com/yassinehemissi/Lunarhackathon2026",
+  "demo": "https://www.smartini.tech/",
+  "content": "<video controls src=\"https://portfoliomyh.b-cdn.net/smartini_demo.mp4\"></video>\n\nSmartini AI was designed as a business operating layer for SMEs, not as a single-purpose dashboard or a standalone chatbot. The product brings together company onboarding, product context, uploaded business knowledge, marketing generation, analytics, and deployable AI sales agents inside one connected workspace.\n\nThe project placed 2nd out of 40 teams during the hackathon, which reflected both the product vision and the fact that the system felt connected end to end rather than built around one isolated feature.\n\n## Product Vision\n\nThe core idea behind Smartini is that small and mid-sized businesses usually work across fragmented tools, with context spread everywhere and no real AI layer that understands the company as a whole.\n\nSmartini solves that by treating the business as one system:\n\n- company profile and onboarding\n- product catalog\n- uploaded files and internal knowledge\n- marketing generation\n- analytics queries\n- sales-agent creation and deployment\n\nThe goal is continuity. A company should not have to rebuild its context separately for each feature.\n\n## What We Built\n\nThe project was structured across three application surfaces:\n\n- a Next.js web platform for the main user experience\n- a Flask backend for persistence and business operations\n- a FastAPI marketing service for campaign generation flows\n\n## Why It Stands Out\n\nWhat makes Smartini compelling is that every feature feeds the next one.\n\nProducts are not isolated catalog items; they become context for sales agents. Uploaded files are not passive storage; they become part of the business knowledge layer. Marketing generation is not generic prompting; it is shaped by company context. Sales agents are not just configurable chat widgets; they are deployable business assets with analytics behind them.\n\n## AI Sales Agents\n\nOne of the strongest parts of the project is the sales-agent layer.\n\nEach agent can carry its own instructions, product scope, connected data, public embed surface, and analytics trail. That means the system does not stop at generating an assistant response. It also measures activity, product interest, sessions, and usage patterns, which makes the AI layer operational rather than decorative.\n\nThis matters because many demos stop at showing that a chatbot can answer. Smartini goes further by turning the agent into something a business can create, deploy, and evaluate.\n\n## Architecture Value\n\nTechnically, the project works because the responsibilities are separated clearly.\n\nThe frontend handles the product experience, dashboard shell, and protected flows. The Flask service owns persistence and business data. The marketing service stays independent. The sales-agent runtime is treated as its own explicit layer instead of being scattered through the app.\n\nThat separation makes the system easier to reason about and gives it a credible upgrade path beyond the hackathon context.\n\n## Why This Project Matters\n\nSmartini is meaningful because it frames AI as a connected execution layer for real businesses. Instead of offering one disconnected AI feature, it ties together setup, context, generation, deployment, and measurement inside one product.\n\nThat combination of product thinking, architecture thinking, UX continuity, and business use case is what gives the project its strength.\n\n![Lunar Ranking](https://portfoliomyh.b-cdn.net/Ranked%20Algorithmic%20LUNAR.png)"
+}

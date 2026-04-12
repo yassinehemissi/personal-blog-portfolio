@@ -26,6 +26,11 @@ type MarkdownSegment =
       mimeType: string;
       width: string;
       height: string;
+    }
+  | {
+      type: "video";
+      src: string;
+      poster?: string;
     };
 
 function getHtmlAttribute(tag: string, attribute: string) {
@@ -35,7 +40,7 @@ function getHtmlAttribute(tag: string, attribute: string) {
 
 function splitMarkdownAndEmbeds(content: string) {
   const segments: MarkdownSegment[] = [];
-  const pattern = /(\$\$[\s\S]+?\$\$|<object\b[\s\S]*?<\/object>)/gi;
+  const pattern = /(\$\$[\s\S]+?\$\$|<object\b[\s\S]*?<\/object>|<video\b[\s\S]*?<\/video>)/gi;
   let lastIndex = 0;
 
   for (const match of content.matchAll(pattern)) {
@@ -54,7 +59,7 @@ function splitMarkdownAndEmbeds(content: string) {
         type: "block-math",
         value: fullMatch.slice(2, -2).trim(),
       });
-    } else {
+    } else if (fullMatch.toLowerCase().startsWith("<object")) {
       const data = getHtmlAttribute(fullMatch, "data");
 
       if (data && /^(https?:\/\/|\/)/i.test(data)) {
@@ -64,6 +69,21 @@ function splitMarkdownAndEmbeds(content: string) {
           mimeType: getHtmlAttribute(fullMatch, "type") || "application/pdf",
           width: getHtmlAttribute(fullMatch, "width") || "100%",
           height: getHtmlAttribute(fullMatch, "height") || "720",
+        });
+      } else {
+        segments.push({
+          type: "markdown",
+          value: fullMatch,
+        });
+      }
+    } else {
+      const src = getHtmlAttribute(fullMatch, "src");
+
+      if (src && /^(https?:\/\/|\/)/i.test(src)) {
+        segments.push({
+          type: "video",
+          src,
+          poster: getHtmlAttribute(fullMatch, "poster") || undefined,
         });
       } else {
         segments.push({
@@ -312,7 +332,7 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
         <img
           src={src}
           alt={alt}
-          className="max-w-full h-auto rounded-lg mb-4 mx-auto shadow-lg"
+          className="max-w-full h-auto rounded-lg my-6 mx-auto shadow-lg"
           {...props}
         />
       ),
@@ -408,6 +428,34 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
                   .
                 </p>
               </object>
+            </div>
+          );
+        }
+
+        if (segment.type === "video") {
+          return (
+            <div
+              key={`video-${index}`}
+              className="my-6 overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950"
+            >
+              <video
+                controls
+                preload="metadata"
+                poster={segment.poster}
+                className="w-full"
+              >
+                <source src={segment.src} />
+                Your browser does not support embedded video.{" "}
+                <a
+                  href={segment.src}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 dark:text-blue-400 underline"
+                >
+                  Open the video
+                </a>
+                .
+              </video>
             </div>
           );
         }
