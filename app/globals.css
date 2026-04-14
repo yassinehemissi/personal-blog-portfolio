@@ -179,3 +179,20 @@ html.dark {
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes homeCarouselSlide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.home-project-slider-track {
+  animation: homeCarouselSlide 34s linear infinite;
+}
+
+.home-blog-slider-track {
+  animation: homeCarouselSlide 34s linear infinite;
+}

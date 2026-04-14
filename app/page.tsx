@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FileText, Github, Linkedin, Mail } from "lucide-react";
+import { HomeCarousels } from "@/components/home/home-carousels";
+import { getAllBlogPosts, getAllProjects } from "@/lib/getPostData";
+import { getFirstMarkdownImage } from "@/lib/seo";
 
 const experience = [
   {
@@ -48,7 +51,27 @@ const education = [
   },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const blogPosts = await getAllBlogPosts();
+  const projects = await getAllProjects();
+
+  const latestProjects = projects.slice(0, 6).map((project) => ({
+    slug: project.slug,
+    title: project.title,
+    summary: project.description,
+    poster: project.cover || getFirstMarkdownImage(project.content) || undefined,
+  }));
+
+  const featuredBlogs = blogPosts
+    .filter((post) => Boolean(post.cover))
+    .slice(0, 6)
+    .map((post) => ({
+      slug: post.slug,
+      title: post.title,
+      excerpt: post.excerpt,
+      cover: post.cover,
+    }));
+
   return (
     <main className="mx-auto max-w-3xl px-6 pt-12 md:pt-10">
       <section className="text-center">
@@ -126,13 +149,22 @@ export default function Home() {
         </div>
       </section>
 
+      <HomeCarousels latestProjects={latestProjects} blogs={featuredBlogs} />
+
       <section className="mt-14 border-t border-slate-200 pt-10 dark:border-slate-800">
         <h2 className="text-sm font-semibold uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400">
           Experience
         </h2>
-        <div className="mt-5 space-y-4">
+        <div className="relative mt-5">
+          <div className="pointer-events-none absolute bottom-2 left-2 top-2 w-px bg-gradient-to-b from-slate-300 via-slate-200 to-transparent dark:from-slate-600 dark:via-slate-700" />
           {experience.map((item) => (
-            <article key={`${item.role}-${item.period}`} className="rounded-2xl border border-slate-200 p-4 dark:border-slate-800">
+            <article
+              key={`${item.role}-${item.period}`}
+              className="group relative border-b border-slate-200 py-5 pl-8 last:border-b-0 dark:border-slate-800"
+            >
+              <span className="absolute left-2 top-[22px] inline-flex h-4 w-4 -translate-x-1/2 items-center justify-center rounded-full bg-white ring-1 ring-slate-300 dark:bg-slate-950 dark:ring-slate-600">
+                <span className="h-1.5 w-1.5 rounded-full bg-slate-400 transition-colors group-hover:bg-slate-600 dark:bg-slate-500 dark:group-hover:bg-slate-300" />
+              </span>
               <h3 className="text-[15px] font-medium text-slate-900 dark:text-white">{item.role}</h3>
               <p className="mt-1 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">{item.period}</p>
               <p className="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-300">{item.summary}</p>
@@ -145,9 +177,16 @@ export default function Home() {
         <h2 className="text-sm font-semibold uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400">
           Education
         </h2>
-        <div className="mt-5 space-y-4">
+        <div className="relative mt-5">
+          <div className="pointer-events-none absolute bottom-2 left-2 top-2 w-px bg-gradient-to-b from-slate-300 via-slate-200 to-transparent dark:from-slate-600 dark:via-slate-700" />
           {education.map((item) => (
-            <article key={`${item.degree}-${item.period}`} className="rounded-2xl border border-slate-200 p-4 dark:border-slate-800">
+            <article
+              key={`${item.degree}-${item.period}`}
+              className="group relative border-b border-slate-200 py-5 pl-8 last:border-b-0 dark:border-slate-800"
+            >
+              <span className="absolute left-2 top-[22px] inline-flex h-4 w-4 -translate-x-1/2 items-center justify-center rounded-full bg-white ring-1 ring-slate-300 dark:bg-slate-950 dark:ring-slate-600">
+                <span className="h-1.5 w-1.5 rounded-full bg-slate-400 transition-colors group-hover:bg-slate-600 dark:bg-slate-500 dark:group-hover:bg-slate-300" />
+              </span>
               <h3 className="text-[15px] font-medium text-slate-900 dark:text-white">{item.degree}</h3>
               <p className="mt-1 text-sm font-medium text-slate-700 dark:text-slate-300">
                 {item.school} (GPA: {item.gpa})
@@ -159,7 +198,6 @@ export default function Home() {
         </div>
       </section>
 
-      
     </main>
   );
 }
