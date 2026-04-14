@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FileText, Github, Linkedin, Mail } from "lucide-react";
 import { HomeCarousels } from "@/components/home/home-carousels";
+import { skills, softSkills } from "@/app/constants/home";
 import { getAllBlogPosts, getAllProjects } from "@/lib/getPostData";
 import { getFirstMarkdownImage } from "@/lib/seo";
 
@@ -116,6 +117,8 @@ export default async function Home() {
             href="https://github.com/yassinehemissi"
             target="_blank"
             rel="noopener noreferrer"
+            data-link-type="social"
+            data-link-id="github"
             className="inline-flex items-center gap-2 rounded-full border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-100 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-900"
           >
             <Github className="h-4 w-4" />
@@ -123,6 +126,8 @@ export default async function Home() {
           </a>
           <a
             href="mailto:hemissiyassine@gmail.com"
+            data-link-type="contact"
+            data-link-id="email"
             className="inline-flex items-center gap-2 rounded-full border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-100 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-900"
           >
             <Mail className="h-4 w-4" />
@@ -132,6 +137,8 @@ export default async function Home() {
             href="https://www.linkedin.com/in/mohamed-yassine-hemissi/"
             target="_blank"
             rel="noopener noreferrer"
+            data-link-type="social"
+            data-link-id="linkedin"
             className="inline-flex items-center gap-2 rounded-full border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-100 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-900"
           >
             <Linkedin className="h-4 w-4" />
@@ -141,6 +148,8 @@ export default async function Home() {
             href="/CV_PHOTO.pdf"
             target="_blank"
             rel="noopener noreferrer"
+            data-link-type="document"
+            data-link-id="master-cv"
             className="inline-flex items-center gap-2 rounded-full border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-100 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-900"
           >
             <FileText className="h-4 w-4" />
@@ -151,7 +160,7 @@ export default async function Home() {
 
       <HomeCarousels latestProjects={latestProjects} blogs={featuredBlogs} />
 
-      <section className="mt-14 border-t border-slate-200 pt-10 dark:border-slate-800">
+      <section className="mt-12 border-t border-slate-200 pt-10 dark:border-slate-800">
         <h2 className="text-sm font-semibold uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400">
           Experience
         </h2>
@@ -173,7 +182,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="mt-14 border-t border-slate-200 pt-10 dark:border-slate-800">
+      <section className="mt-12 border-t border-slate-200 pt-10 dark:border-slate-800">
         <h2 className="text-sm font-semibold uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400">
           Education
         </h2>
@@ -196,6 +205,50 @@ export default async function Home() {
             </article>
           ))}
         </div>
+      </section>
+
+      <section className="mt-12 border-t border-slate-200 pt-10 dark:border-slate-800">
+        <details className="group rounded-xl border border-slate-200 px-4 py-3 dark:border-slate-800">
+          <summary className="cursor-pointer list-none text-sm font-semibold uppercase tracking-[0.14em] text-slate-500 marker:content-none dark:text-slate-400">
+            <span className="flex items-center justify-between">
+              Skills
+              <span className="text-xs text-slate-400 transition-transform group-open:rotate-45 dark:text-slate-500">+</span>
+            </span>
+          </summary>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {skills.map((skill) => (
+              <span
+                key={skill}
+                className="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-medium text-slate-700 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300"
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
+        </details>
+
+        <details className="group mt-3 rounded-xl border border-slate-200 px-4 py-3 dark:border-slate-800">
+          <summary className="cursor-pointer list-none text-sm font-semibold uppercase tracking-[0.14em] text-slate-500 marker:content-none dark:text-slate-400">
+            <span className="flex items-center justify-between">
+              Core Strengths
+              <span className="text-xs text-slate-400 transition-transform group-open:rotate-45 dark:text-slate-500">+</span>
+            </span>
+          </summary>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {softSkills.map((skill) => (
+              <span
+                key={skill}
+                className="inline-flex items-center rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-700 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-300"
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
+        </details>
+
+        <p className="mt-3 text-xs text-slate-500 dark:text-slate-400">
+          Note: These skill groups are AI-generated and inferred from the full portfolio content.
+        </p>
       </section>
 
     </main>

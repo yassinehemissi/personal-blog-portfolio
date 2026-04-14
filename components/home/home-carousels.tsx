@@ -26,7 +26,7 @@ export function HomeCarousels({
 
   return (
     <>
-      <section className="mt-14 border-t border-slate-200 pt-10 dark:border-slate-800">
+      <section className="mt-12 border-t border-slate-200 pt-10 dark:border-slate-800">
         <div className="mb-4 flex items-center justify-between">
           <h2 className="text-sm font-semibold uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400">
             Latest Projects
@@ -71,7 +71,7 @@ export function HomeCarousels({
         </div>
       </section>
 
-      <section className="mt-10 border-t border-slate-200 pt-10 dark:border-slate-800">
+      <section className="mt-12 border-t border-slate-200 pt-10 dark:border-slate-800">
         <div className="mb-4 flex items-center justify-between">
           <h2 className="text-sm font-semibold uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400">
             My Words
