@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import Pagination from "../ui/pagination";
 
@@ -20,14 +20,15 @@ interface BlogPost {
 interface BlogClientProps {
   blogPosts: BlogPost[];
   categories: string[];
+  initialPage?: number;
 }
 
 const POSTS_PER_PAGE = 5;
 
-export default function BlogClient({ blogPosts, categories }: BlogClientProps) {
+export default function BlogClient({ blogPosts, categories, initialPage = 1 }: BlogClientProps) {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(initialPage);
 
   const allCategories = ["All", ...categories];
 
@@ -44,9 +45,20 @@ export default function BlogClient({ blogPosts, categories }: BlogClientProps) {
 
   // Calculate pagination
   const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
-  const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
+  const safeCurrentPage = Math.max(1, Math.min(currentPage, Math.max(1, totalPages)));
+  const startIndex = (safeCurrentPage - 1) * POSTS_PER_PAGE;
   const endIndex = startIndex + POSTS_PER_PAGE;
   const currentPosts = filteredPosts.slice(startIndex, endIndex);
+
+  useEffect(() => {
+    setCurrentPage(initialPage);
+  }, [initialPage]);
+
+  useEffect(() => {
+    if (currentPage !== safeCurrentPage) {
+      setCurrentPage(safeCurrentPage);
+    }
+  }, [currentPage, safeCurrentPage]);
 
   // Reset to page 1 when filters change
   const handleCategoryChange = (category: string) => {
@@ -175,9 +187,10 @@ export default function BlogClient({ blogPosts, categories }: BlogClientProps) {
           {/* Pagination */}
           {filteredPosts.length > 0 && (
             <Pagination
-              currentPage={currentPage}
+              currentPage={safeCurrentPage}
               totalPages={totalPages}
               onPageChange={setCurrentPage}
+              getPageHref={(page) => (page <= 1 ? "/blog" : `/blog?page=${page}`)}
               totalItems={filteredPosts.length}
               itemsPerPage={POSTS_PER_PAGE}
             />

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import Pagination from "../ui/pagination";
 
@@ -23,6 +23,7 @@ interface Project {
 interface ProjectsClientProps {
   projects: Project[];
   categories: string[];
+  initialPage?: number;
 }
 
 const PROJECTS_PER_PAGE = 6;
@@ -41,11 +42,11 @@ function getTierClasses(tier: Project["tier"]) {
   }
 }
 
-export default function ProjectsClient({ projects, categories }: ProjectsClientProps) {
+export default function ProjectsClient({ projects, categories, initialPage = 1 }: ProjectsClientProps) {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedTier, setSelectedTier] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(initialPage);
 
   const allCategories = ["All", ...categories];
   const allTiers = ["All", ...TIER_ORDER.filter((tier) => projects.some((project) => project.tier === tier))];
@@ -64,9 +65,20 @@ export default function ProjectsClient({ projects, categories }: ProjectsClientP
 
   // Calculate pagination
   const totalPages = Math.ceil(filteredProjects.length / PROJECTS_PER_PAGE);
-  const startIndex = (currentPage - 1) * PROJECTS_PER_PAGE;
+  const safeCurrentPage = Math.max(1, Math.min(currentPage, Math.max(1, totalPages)));
+  const startIndex = (safeCurrentPage - 1) * PROJECTS_PER_PAGE;
   const endIndex = startIndex + PROJECTS_PER_PAGE;
   const currentProjects = filteredProjects.slice(startIndex, endIndex);
+
+  useEffect(() => {
+    setCurrentPage(initialPage);
+  }, [initialPage]);
+
+  useEffect(() => {
+    if (currentPage !== safeCurrentPage) {
+      setCurrentPage(safeCurrentPage);
+    }
+  }, [currentPage, safeCurrentPage]);
 
   // Reset to page 1 when filters change
   const handleCategoryChange = (category: string) => {
@@ -256,9 +268,10 @@ export default function ProjectsClient({ projects, categories }: ProjectsClientP
           {/* Pagination */}
           {filteredProjects.length > 0 && (
             <Pagination
-              currentPage={currentPage}
+              currentPage={safeCurrentPage}
               totalPages={totalPages}
               onPageChange={setCurrentPage}
+              getPageHref={(page) => (page <= 1 ? "/projects" : `/projects?page=${page}`)}
               totalItems={filteredProjects.length}
               itemsPerPage={PROJECTS_PER_PAGE}
             />
