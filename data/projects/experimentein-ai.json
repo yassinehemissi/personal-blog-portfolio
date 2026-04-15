@@ -1,0 +1,27 @@
+{
+  "title": "Experimentein.ai: A smarter way to explore biological experiments",
+  "author": "Babyneers Team",
+  "categories": ["AI", "Engineering", "Academic/Community"],
+  "tier": "Flagship",
+  "post_date": "2026-02-01",
+  "update_date": "2026-02-01",
+  "slug": "experimentein-ai",
+  "description": "An evidence-first AI platform that extracts, indexes, and searches protein experiments from scientific papers using a multi-stage parsing pipeline, vector retrieval, and agent tooling.",
+  "technologies": [
+    "Next.js 16",
+    "TypeScript",
+    "Python",
+    "LangGraph",
+    "Qdrant",
+    "Astra DB",
+    "MongoDB",
+    "GROBID",
+    "Docling",
+    "MCP"
+  ],
+  "year": "2026",
+  "github": "https://github.com/yassinehemissi/babyneers-vectors-in-orbit-2026",
+  "demo": "https://vectors-in-orbit-2026.vercel.app",
+  "cover": "https://portfoliomyh.b-cdn.net/chrome_C69BclNRf1.png",
+  "content": "![experimentein.ai](https://portfoliomyh.b-cdn.net/chrome_C69BclNRf1.png)\n\nBuilt during Vectors in Orbit 2026 (GDC SupCom - FST, in partnership with Qdrant) by Team Babyneers (5 members). I contributed across full-stack delivery and AI systems architecture.\n\nexperimentein.ai addresses a practical research bottleneck: experiment-level information is buried in dense PDFs and is difficult to search at scale. Instead of treating documents as plain chunks, we modeled experiments as first-class entities while preserving provenance links back to source evidence.\n\n## What We Built\n\nA full end-to-end system across interconnected services:\n\n- Extraction Pipeline v2 (Python)\n- Next.js web application (experimentein.ai)\n- MCP server for tool-based retrieval\n- Scrapper/uploader service for assets\n\n## Extraction Pipeline v2\n\nThe pipeline converts PDFs into structured and searchable experiment records in three stages:\n\n1. `pdf_to_infra`: ingests papers through GROBID (TEI/XML) and Docling, uploads assets, and initializes paper metadata.\n2. `structure_to_blocks`: normalizes structural blocks, generates section summaries, computes embeddings, and writes vectors to Qdrant.\n3. `blocks_to_items`: runs retrieval-first candidate generation, then deterministic merge logic to surface clean experiment entities.\n\n## Web App and Agent Layer\n\nThe platform provides evidence-first search across papers, sections, blocks, and extracted experiment items. It includes:\n\n- experiment viewer and side-by-side comparison\n- credit accounting and usage history\n- a LangGraph agent that can reason over indexed evidence\n\nThe in-app agent is connected to a custom MCP server exposing Astra DB and Qdrant tools, giving the AI layer native, composable retrieval capabilities.\n\n## Architecture Decisions\n\nKey choices that made the system robust:\n\n- experiment-centric data model instead of chunk-only retrieval\n- retrieval-first extraction before LLM structuring to reduce hallucinations and control cost\n- hybrid ingestion (GROBID + Docling) for better metadata/layout coverage\n- MCP-based tooling rather than brittle prompt-only data access\n\n## Reflection\n\nThe biggest win was treating each service boundary as explicit and testable. Under hackathon pressure, this let the team parallelize effectively while keeping data contracts clear between ingestion, indexing, retrieval, and agent interaction.\n\nBuilt in 2026 by Babyneers: Mohamed Amin Abassi, Fatma Ben Lakdhar, Rima Ardhaoui, Amina Bayoudh, and Mohamed Yassine Hemissi."
+}
