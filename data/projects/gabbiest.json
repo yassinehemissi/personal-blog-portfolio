@@ -1,0 +1,30 @@
+{
+  "title": "Gabbiest: AI Healing Gabes (H12 Hackathon)",
+  "author": "Synaptech Team",
+  "categories": [
+    "Engineering",
+    "Creative Lab",
+    "Academic/Community"
+  ],
+  "tier": "Flagship",
+  "post_date": "2026-04-19",
+  "update_date": "2026-04-19",
+  "slug": "gabbiest",
+  "description": "A nonprofit CSR platform built at H12 Hackathon to help industries and citizens in Gabes monitor pollution, audit projects, and fund practical R&D interventions.",
+  "technologies": [
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "FastAPI",
+    "Python",
+    "LangChain",
+    "LangGraph",
+    "MongoDB"
+  ],
+  "year": "2026",
+  "github": "https://github.com/yassinehemissi/H12-AI-Healing-GABES-2026",
+  "demo": "https://synaptechh12.vercel.app",
+  "cover": "https://portfoliomyh.b-cdn.net/Gabbiest/winning.png",
+  "content": "<video controls src=\"https://portfoliomyh.b-cdn.net/Gabbiest/Demo.mp4\"></video>\n\nGABBIEST is a nonprofit initiative built during the H12 Hackathon: AI Healing Gabes. The goal is to improve CSR outcomes for profitable companies while making environmental action more visible and practical in Gabes, Tunisia.\n\n**Result: 1st place winner at H12 Hackathon (AI Healing Gabes).**\n\n## Mission\n\nThe platform focuses on three outcomes:\n\n- CSR dashboarding and environmental monitoring\n- AI-assisted audit workflows\n- investment visibility for CSR receipts so organizations can reinvest into high-impact internal R&D projects that are critical for pollution reduction\n\n## Why This Project Matters\n\nGabes faces real pollution pressure, and the challenge is not only technical. It requires transparent coordination between industry, citizens, and local innovation actors. GABBIEST was built as a practical bridge between those actors through data, scoring, and auditable workflows.\n\n## Product Scope\n\nThe repository is structured as a multi-surface system:\n\n- `web/`: Next.js application for landing, auth, dashboard, analytics, map, and investment views\n- `backend/`: FastAPI services for audits, analytics, analysis, scraping, and data seeding\n- `RSE PROJECTS CODE/`: CSR prototypes and related modules\n- `vibe/`: internal coding guidance and workflow notes\n\nCore capabilities include:\n\n- enterprise and citizen dashboard modes\n- pollution and CSR scoring views\n- AI-assisted project audits\n- prompt-driven analytics generation\n- scraping status and data ingestion flows\n- CSR recommendation and company ranking endpoints\n\n## R&D Proof of Concept\n\nAs part of the CSR R&D track, we built four proof-of-concept project lines:\n\n- Smart waste management with faster routing (Dijkstra-based) to reduce emissions\n- NH3 tracking to support controlled pooling with sulfuric acid for fertilizer workflows\n- transparency agents for civilians to track risk zones and avoid danger\n- smart recycling agent flows that turn waste into practical reuse ideas for citizens\n\n## Team\n\nSynaptech:\n\n- Aziza Naffeti\n- Anas Nguira\n- Amal Ben Amor\n- Houssem Somai\n- Khouloud Khechim\n- Mohamed Yassine Hemissi\n\n## Presentation\n\n<object data=\"https://portfoliomyh.b-cdn.net/Gabbiest/Presentation.pdf\" type=\"application/pdf\" width=\"100%\" height=\"720\"></object>\n\n## Hackathon Winning Photo\n\n![GABBIEST Team Winning Photo](https://portfoliomyh.b-cdn.net/Gabbiest/winning.png)"
+}
