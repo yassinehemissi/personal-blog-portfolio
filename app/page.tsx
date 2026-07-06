@@ -8,6 +8,12 @@ import { getFirstMarkdownImage } from "@/lib/seo";
 
 const experience = [
   {
+    role: "AI Engineering Intern - ODDO BHF",
+    period: "2026 - Now",
+    summary:
+      "Working within the asset management team.",
+  },
+  {
     role: "Freelance Software Engineer",
     period: "2019 - 2025",
     summary:
