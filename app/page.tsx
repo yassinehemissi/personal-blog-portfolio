@@ -9,15 +9,21 @@ import { getFirstMarkdownImage } from "@/lib/seo";
 const experience = [
   {
     role: "AI Engineering Intern - ODDO BHF",
-    period: "2026 - Now",
+    period: "Jun 2026 - Aug 2026",
     summary:
-      "Working within the asset management team.",
+      "Delivered business automation solutions with PRISME.AI for the OBAM Asset Management data team, working from high-level problem statements. Removed repetitive manual processes and cut execution time by up to 25x.",
   },
   {
-    role: "Freelance Software Engineer",
-    period: "2019 - 2025",
+    role: "AI Engineering Intern - ESPRIT, Mobility Department",
+    period: "Mar 2026 - Aug 2026",
     summary:
-      "Built backend and full-stack systems for 15+ clients, balancing scalability with cost. Led a B2B coordination platform later pitched to Attijari Bank Leasing.",
+      "Built AI-powered automation with a team of 3: conversational assistants, automated form processing, and internal platforms. Reduced repetitive workload across the department by 50-60%.",
+  },
+  {
+    role: "Co-Founder & Freelance Software Engineer - H&H Agency",
+    period: "2021 - 2026",
+    summary:
+      "Delivered software projects for 15+ clients across France, Tunisia, Qatar, the USA, and Canada in a range of industries. Led a B2B coordination platform later pitched to Attijari Bank Leasing.",
   },
   {
     role: "Software Development Intern - Artify Inc",
