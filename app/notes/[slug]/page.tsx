@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: NotePageProps): Promise<Metad
   const images = note.cover ? [{ url: note.cover, alt: note.title }] : undefined;
 
   return {
-    title: `${note.title} | Notes`,
+    title: note.title,
     description: note.excerpt,
     alternates: {
       canonical: `/notes/${note.slug}`,

@@ -3,6 +3,14 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MarkdownRenderer } from "@/components/markdown-renderer";
 import { getAllBlogPosts, getBlogPost } from "@/lib/getPostData";
+import {
+  DEFAULT_OG_IMAGE,
+  SITE_NAME,
+  absoluteUrl,
+  getLastModified,
+  getSiteUrl,
+  parseContentDate,
+} from "@/lib/seo";
 
 interface BlogPageProps {
   params: Promise<{
@@ -27,10 +35,11 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
     return {};
   }
 
-  const images = post.cover ? [{ url: post.cover, alt: post.title }] : undefined;
+  const cover = post.cover || DEFAULT_OG_IMAGE;
+  const images = [{ url: cover, alt: post.title }];
 
   return {
-    title: `${post.title} | Blog`,
+    title: post.title,
     description: post.excerpt,
     alternates: {
       canonical: `/blog/${post.slug}`,
@@ -44,13 +53,14 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
       modifiedTime: post.update_date,
       authors: [post.author],
       tags: post.categories,
+      siteName: SITE_NAME,
       images,
     },
     twitter: {
-      card: images ? "summary_large_image" : "summary",
+      card: "summary_large_image",
       title: post.title,
       description: post.excerpt,
-      images: post.cover ? [post.cover] : undefined,
+      images: [cover],
     },
   };
 }
@@ -73,13 +83,51 @@ export default async function BlogPage({ params }: BlogPageProps) {
     });
   };
 
+  const siteUrl = getSiteUrl();
+  const canonical = `${siteUrl}/blog/${post.slug}`;
+  const published = parseContentDate(post.post_date);
+
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": `${canonical}#article`,
+      headline: post.title,
+      description: post.excerpt,
+      url: canonical,
+      mainEntityOfPage: canonical,
+      inLanguage: "en",
+      datePublished: (published ?? new Date()).toISOString(),
+      dateModified: getLastModified(post.post_date, post.update_date).toISOString(),
+      keywords: post.categories.join(", "),
+      articleSection: post.categories,
+      image: [absoluteUrl(post.cover || DEFAULT_OG_IMAGE)],
+      author: { "@type": "Person", name: post.author, url: siteUrl },
+      publisher: { "@id": `${siteUrl}/#person` },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
+        { "@type": "ListItem", position: 2, name: "Blog", item: `${siteUrl}/blog` },
+        { "@type": "ListItem", position: 3, name: post.title, item: canonical },
+      ],
+    },
+  ];
+
   return (
     <main className="min-h-screen bg-white dark:bg-slate-950 text-foreground">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <article className="max-w-2xl mx-auto px-4 py-16 sm:py-24 bg-white dark:bg-slate-950" >
         {post.cover && (
           <img
             src={post.cover}
             alt={post.title}
+            fetchPriority="high"
             className="mb-10 h-auto max-h-[420px] w-full rounded-3xl object-cover shadow-lg"
           />
         )}

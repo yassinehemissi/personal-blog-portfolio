@@ -1,10 +1,35 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { FileText, Github, Linkedin, Mail } from "lucide-react";
 import { HomeCarousels } from "@/components/home/home-carousels";
 import { skills, softSkills } from "@/app/constants/home";
 import { getAllBlogPosts, getAllProjects } from "@/lib/getPostData";
-import { getFirstMarkdownImage } from "@/lib/seo";
+import {
+  DEFAULT_OG_IMAGE,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_TAGLINE,
+  getFirstMarkdownImage,
+} from "@/lib/seo";
+
+export const metadata: Metadata = {
+  title: {
+    absolute: `${SITE_NAME} | ${SITE_TAGLINE}`,
+  },
+  description: SITE_DESCRIPTION,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: `${SITE_NAME} | ${SITE_TAGLINE}`,
+    description: SITE_DESCRIPTION,
+    type: "profile",
+    url: "/",
+    siteName: SITE_NAME,
+    images: [{ url: DEFAULT_OG_IMAGE, alt: SITE_NAME }],
+  },
+};
 
 const experience = [
   {

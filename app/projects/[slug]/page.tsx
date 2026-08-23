@@ -3,7 +3,15 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MarkdownRenderer } from "@/components/markdown-renderer";
 import { getAllProjects, getProject } from "@/lib/getPostData";
-import { getFirstMarkdownImage } from "@/lib/seo";
+import {
+  DEFAULT_OG_IMAGE,
+  SITE_NAME,
+  absoluteUrl,
+  getFirstMarkdownImage,
+  getLastModified,
+  getSiteUrl,
+  parseContentDate,
+} from "@/lib/seo";
 
 function getTierClasses(tier?: string) {
   switch (tier) {
@@ -41,11 +49,12 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
     return {};
   }
 
-  const cover = project.cover || getFirstMarkdownImage(project.content);
-  const images = cover ? [{ url: cover, alt: project.title }] : undefined;
+  const cover =
+    project.cover || getFirstMarkdownImage(project.content) || DEFAULT_OG_IMAGE;
+  const images = [{ url: cover, alt: project.title }];
 
   return {
-    title: `${project.title} | Projects`,
+    title: project.title,
     description: project.description,
     alternates: {
       canonical: `/projects/${project.slug}`,
@@ -59,13 +68,14 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
       modifiedTime: project.update_date,
       authors: [project.author],
       tags: project.categories,
+      siteName: SITE_NAME,
       images,
     },
     twitter: {
-      card: images ? "summary_large_image" : "summary",
+      card: "summary_large_image",
       title: project.title,
       description: project.description,
-      images: cover ? [cover] : undefined,
+      images: [cover],
     },
   };
 }
@@ -88,8 +98,49 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     });
   };
 
+  const siteUrl = getSiteUrl();
+  const canonical = `${siteUrl}/projects/${project.slug}`;
+  const cover =
+    project.cover || getFirstMarkdownImage(project.content) || DEFAULT_OG_IMAGE;
+  const published = parseContentDate(project.post_date);
+
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "@id": `${canonical}#project`,
+      name: project.title,
+      headline: project.title,
+      description: project.description,
+      url: canonical,
+      mainEntityOfPage: canonical,
+      inLanguage: "en",
+      datePublished: (published ?? new Date()).toISOString(),
+      dateModified: getLastModified(project.post_date, project.update_date).toISOString(),
+      keywords: [...project.categories, ...project.technologies].join(", "),
+      image: [absoluteUrl(cover)],
+      author: { "@type": "Person", name: project.author, url: siteUrl },
+      publisher: { "@id": `${siteUrl}/#person` },
+      ...(project.demo ? { sameAs: [project.demo] } : {}),
+      ...(project.github ? { codeRepository: project.github } : {}),
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
+        { "@type": "ListItem", position: 2, name: "Projects", item: `${siteUrl}/projects` },
+        { "@type": "ListItem", position: 3, name: project.title, item: canonical },
+      ],
+    },
+  ];
+
   return (
     <main className="min-h-screen bg-white dark:bg-slate-950 text-foreground">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <article className="max-w-4xl mx-auto px-4 py-16 sm:py-24">
         {/* Header */}
         <header className="mb-12">
