@@ -193,7 +193,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               {project.technologies.map((tech) => (
                 <span
                   key={tech}
-                  className="px-3 py-1 rounded-full text-sm bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300"
+                  className="px-3 py-1 rounded-full text-sm bg-blue-100 dark:bg-slate-800 text-blue-700 dark:text-slate-200"
                 >
                   {tech}
                 </span>

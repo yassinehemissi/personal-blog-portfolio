@@ -303,6 +303,16 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
               style={isDark ? oneDark : oneLight}
               language={language}
               PreTag="div"
+              // oneDark's own panel is hsl(220, 13%, 18%) - blue-tinted. Force a
+              // neutral surface so code blocks match the rest of dark mode.
+              customStyle={
+                isDark
+                  ? { background: "#171717", border: "1px solid #262626" }
+                  : undefined
+              }
+              codeTagProps={
+                isDark ? { style: { background: "transparent" } } : undefined
+              }
               className="mb-4 rounded-lg overflow-hidden"
               {...props}
             >
