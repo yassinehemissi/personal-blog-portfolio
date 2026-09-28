@@ -1,0 +1,30 @@
+{
+  "title": "Perfect CV - Job-Tailored Resume Engine",
+  "author": "Mohamed Yassine Hemissi",
+  "categories": ["Engineering", "Academic/Community"],
+  "tier": "Strong",
+  "post_date": "2026-09-28",
+  "update_date": "2026-09-28",
+  "slug": "perfect-cv",
+  "description": "Perfect CV turns a pasted job posting into a tailored resume, scoring every record in your history with a decision router and letting code, not a language model, choose what goes on the page.",
+  "technologies": [
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "shadcn/ui",
+    "LangChain",
+    "LangGraph",
+    "OpenRouter Decisions",
+    "Qdrant",
+    "Neon Postgres",
+    "Drizzle ORM",
+    "Better Auth",
+    "Bunny CDN",
+    "Vitest"
+  ],
+  "year": "2026",
+  "github": "https://github.com/yassinehemissi/perfect-cv",
+  "demo": "",
+  "content": "![Poster](https://portfoliomyh.b-cdn.net/01-landing.png)\n\nPerfect CV keeps a career history as structured blocks and builds a `.docx` resume per application from the pieces that fit the posting. It is a free initiative rather than a product: no subscription, no templates, data held on EU servers.\n\nThe design rests on one rule: **a language model never decides what goes on the resume.** Every record is scored against the posting by a decision router, and the choosing — how many roles, which ones, in what order — is plain code. The model is used for a single job: rewriting the records it is handed into prose aimed at that posting.\n\n## Highlights\n- Three-stage LangGraph pipeline with the user supervising between stages: read the posting, score and choose, write and render\n- Per-record scoring through OpenRouter's decision API, with caps, thresholds and chronology applied deterministically in code\n- Semantic retrieval over the user's own history with Qdrant and BGE-M3 embeddings\n- Resume rendered into the user's own .docx template by regenerating only `word/document.xml`, so styles and fonts survive byte for byte\n- PDF import: a second graph parses an existing CV into history records and proposes profile titles across distinct career directions\n- Writing split into one small call per entry, keeping every prompt bounded for a size-sensitive self-hosted gateway, with automatic failover to a second provider\n- 192 tests, covering the selection rules, the prompt contracts and the failure modes each rule exists to prevent\n\n## Engineering notes\nMost of the interesting work was finding where a model should not be trusted:\n\n- Asking the writer not to claim a qualification the candidate lacked failed in five runs out of five. Withholding the posting's qualification bar from the prompt fixed it.\n- Three proposed profile titles kept coming back as one job renamed. Embedding similarity could not separate them — with BGE-M3, \"LLM Application Developer\" and \"Mobile Application Developer\" score 0.829 while the genuine duplicate \"AI Engineer\" and \"LLM Application Developer\" scores 0.560. Labelling each role's angle and spending one slot per direction did.\n- Banning stock resume phrasing in the prompt did not hold; detecting it in code and asking again by name did.\n\n## Technologies\n- Next.js 16 (App Router, cacheComponents), React 19, TypeScript\n- Tailwind CSS v4 and shadcn/ui on Radix\n- LangGraph and LangChain for the generation and import graphs\n- OpenRouter Decisions for per-record scoring\n- Qdrant for semantic search over personal history\n- Neon Postgres with Drizzle ORM\n- Better Auth with manual account approval\n- Bunny CDN with signed URLs for generated files\n- Vitest and Testing Library\n\n## Images\n![Landing](https://portfoliomyh.b-cdn.net/01-landing.png)\n![Generated resume](https://portfoliomyh.b-cdn.net/08-checkpoint.png)\n![History](https://portfoliomyh.b-cdn.net/05-history.png)\n![Resumes](https://portfoliomyh.b-cdn.net/06-resumes.png)\n![New job](https://portfoliomyh.b-cdn.net/07-new-job.png)\n"
+}
