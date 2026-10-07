@@ -1,0 +1,5 @@
+{
+  "title": "Hello, Classic!",
+  "description": "A raw HTML page mounted inside the Next.js site via classic-parser. External stylesheets, inline styles, and scripts all run.",
+  "noindex": true
+}
