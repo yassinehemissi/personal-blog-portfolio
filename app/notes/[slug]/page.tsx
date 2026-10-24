@@ -19,7 +19,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: NotePageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: NotePageProps): Promise<Metadata> {
   const { slug } = await params;
   const note = await getNote(slug);
 
@@ -27,7 +29,9 @@ export async function generateMetadata({ params }: NotePageProps): Promise<Metad
     return {};
   }
 
-  const images = note.cover ? [{ url: note.cover, alt: note.title }] : undefined;
+  const images = note.cover
+    ? [{ url: note.cover, alt: note.title }]
+    : undefined;
 
   return {
     title: note.title,

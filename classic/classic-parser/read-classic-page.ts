@@ -28,7 +28,7 @@ function assertSafeFolder(folder: string): string {
 
   if (!normalized) {
     throw new Error(
-      `generateClassicPage: invalid folder path "${folder}". Expected a relative folder under classic/, e.g. "my-page".`
+      `generateClassicPage: invalid folder path "${folder}". Expected a relative folder under classic/, e.g. "my-page".`,
     );
   }
 
@@ -36,10 +36,13 @@ function assertSafeFolder(folder: string): string {
 
   if (
     path.isAbsolute(folder) ||
-    segments.some((segment) => segment === ".." || segment === "." || /^[a-zA-Z]:$/.test(segment))
+    segments.some(
+      (segment) =>
+        segment === ".." || segment === "." || /^[a-zA-Z]:$/.test(segment),
+    )
   ) {
     throw new Error(
-      `generateClassicPage: invalid folder path "${folder}". Path traversal and absolute paths are not allowed.`
+      `generateClassicPage: invalid folder path "${folder}". Path traversal and absolute paths are not allowed.`,
     );
   }
 
@@ -55,7 +58,7 @@ function findEntryHtml(dir: string, folder: string): string {
 
   if (htmlFiles.length === 0) {
     throw new Error(
-      `generateClassicPage: no .html file found in classic/${folder}. Add an index.html.`
+      `generateClassicPage: no .html file found in classic/${folder}. Add an index.html.`,
     );
   }
 
@@ -66,7 +69,7 @@ function findEntryHtml(dir: string, folder: string): string {
 
   if (htmlFiles.length > 1) {
     throw new Error(
-      `generateClassicPage: multiple .html files in classic/${folder} (${htmlFiles.join(", ")}) and no index.html. Either add an index.html or keep a single .html file.`
+      `generateClassicPage: multiple .html files in classic/${folder} (${htmlFiles.join(", ")}) and no index.html. Either add an index.html or keep a single .html file.`,
     );
   }
 
@@ -84,7 +87,7 @@ function readMeta(dir: string, folder: string): ClassicMeta {
     return JSON.parse(fs.readFileSync(metaPath, "utf8")) as ClassicMeta;
   } catch (error) {
     throw new Error(
-      `generateClassicPage: failed to parse classic/${folder}/meta.json: ${(error as Error).message}`
+      `generateClassicPage: failed to parse classic/${folder}/meta.json: ${(error as Error).message}`,
     );
   }
 }
@@ -98,11 +101,15 @@ export const getClassicPage = cache(
   async (folder: string): Promise<ClassicPageData> => {
     const normalized = assertSafeFolder(folder);
 
-    const dir = path.join(process.cwd(), CLASSIC_ROOT, ...normalized.split("/"));
+    const dir = path.join(
+      process.cwd(),
+      CLASSIC_ROOT,
+      ...normalized.split("/"),
+    );
 
     if (!fs.existsSync(dir) || !fs.statSync(dir).isDirectory()) {
       throw new Error(
-        `generateClassicPage: folder "classic/${normalized}" does not exist.`
+        `generateClassicPage: folder "classic/${normalized}" does not exist.`,
       );
     }
 
@@ -111,10 +118,13 @@ export const getClassicPage = cache(
     const parsed = parseClassicHtml(source);
     const meta = readMeta(dir, normalized);
 
-    if (process.env.NODE_ENV === "development" && parsed.relativeUrls.length > 0) {
+    if (
+      process.env.NODE_ENV === "development" &&
+      parsed.relativeUrls.length > 0
+    ) {
       console.warn(
         `[classic-parser] classic/${normalized} uses relative asset URL(s): ${parsed.relativeUrls.join(", ")}. ` +
-          "Assets must be absolute (https://...) or site-rooted (/...) - relative paths are never served and will 404."
+          "Assets must be absolute (https://...) or site-rooted (/...) - relative paths are never served and will 404.",
       );
     }
 
@@ -135,5 +145,5 @@ export const getClassicPage = cache(
       noindex: meta.noindex === false ? false : true,
       head: parsed.head,
     };
-  }
+  },
 );

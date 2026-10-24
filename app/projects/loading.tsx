@@ -1,3 +1,3 @@
 export default function ProjectsLoading() {
-  return null
+  return null;
 }

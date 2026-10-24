@@ -29,7 +29,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: BlogPageProps): Promise<Metadata> {
   const { slug } = await params;
   const post = await getBlogPost(slug);
 
@@ -80,9 +82,9 @@ export default async function BlogPage({ params }: BlogPageProps) {
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleDateString(post.language === "fr" ? "fr-FR" : "en-US", {
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
+      year: "numeric",
+      month: "long",
+      day: "numeric",
     });
   };
 
@@ -101,7 +103,10 @@ export default async function BlogPage({ params }: BlogPageProps) {
       mainEntityOfPage: canonical,
       inLanguage: post.language ?? "en",
       datePublished: (published ?? new Date()).toISOString(),
-      dateModified: getLastModified(post.post_date, post.update_date).toISOString(),
+      dateModified: getLastModified(
+        post.post_date,
+        post.update_date,
+      ).toISOString(),
       keywords: post.categories.join(", "),
       articleSection: post.categories,
       image: [absoluteUrl(post.cover || DEFAULT_OG_IMAGE)],
@@ -113,7 +118,12 @@ export default async function BlogPage({ params }: BlogPageProps) {
       "@type": "BreadcrumbList",
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
-        { "@type": "ListItem", position: 2, name: "Blog", item: `${siteUrl}/blog` },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Blog",
+          item: `${siteUrl}/blog`,
+        },
         { "@type": "ListItem", position: 3, name: post.title, item: canonical },
       ],
     },
@@ -125,7 +135,10 @@ export default async function BlogPage({ params }: BlogPageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <article lang={post.language ?? "en"} className="max-w-2xl mx-auto px-4 py-16 sm:py-24 bg-white dark:bg-slate-950" >
+      <article
+        lang={post.language ?? "en"}
+        className="max-w-2xl mx-auto px-4 py-16 sm:py-24 bg-white dark:bg-slate-950"
+      >
         {post.cover && (
           <img
             src={post.cover}
@@ -150,11 +163,16 @@ export default async function BlogPage({ params }: BlogPageProps) {
             <span>·</span>
             <span>{post.readTime}</span>
             <span>·</span>
-            <span>{post.language === "fr" ? "Par" : "By"} {post.author}</span>
+            <span>
+              {post.language === "fr" ? "Par" : "By"} {post.author}
+            </span>
           </div>
           <div className="flex flex-wrap gap-2 mb-6">
             {post.categories.map((category) => (
-              <span key={category} className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-300 text-sm">
+              <span
+                key={category}
+                className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-300 text-sm"
+              >
                 {category}
               </span>
             ))}
@@ -164,7 +182,9 @@ export default async function BlogPage({ params }: BlogPageProps) {
         {/* Content */}
         {post.content.split("<!-- gallery -->").map((content, index) => (
           <Fragment key={index}>
-            {index > 0 && post.gallery && <BlogImageGallery gallery={post.gallery} />}
+            {index > 0 && post.gallery && (
+              <BlogImageGallery gallery={post.gallery} />
+            )}
             <MarkdownRenderer content={content} />
           </Fragment>
         ))}

@@ -97,7 +97,8 @@ export default async function Home() {
     slug: project.slug,
     title: project.title,
     summary: project.description,
-    poster: project.cover || getFirstMarkdownImage(project.content) || undefined,
+    poster:
+      project.cover || getFirstMarkdownImage(project.content) || undefined,
   }));
 
   const featuredBlogs = blogPosts
@@ -133,19 +134,34 @@ export default async function Home() {
         <div className="mx-auto mt-6 max-w-2xl space-y-3 text-pretty text-slate-700 dark:text-slate-300">
           <p>
             Hi, I'm Yassine.
-            <span className="mx-auto my-2 hidden h-px w-12 bg-slate-300 dark:bg-slate-700 md:block" />
-            {" "}I love, and probably always will love, computer science because it changes lives.
+            <span className="mx-auto my-2 hidden h-px w-12 bg-slate-300 dark:bg-slate-700 md:block" />{" "}
+            I love, and probably always will love, computer science because it
+            changes lives.
           </p>
           <p>
-            I'm interested in AI, system design, and research that holds up in practice.
-            <span className="hidden md:block" />
-            {" "}Browse the <Link href="/projects" className="underline underline-offset-4 hover:text-slate-900 dark:hover:text-white">projects</Link> or read the{" "}
-            <Link href="/blog" className="underline underline-offset-4 hover:text-slate-900 dark:hover:text-white">blog</Link>.
+            I'm interested in AI, system design, and research that holds up in
+            practice.
+            <span className="hidden md:block" /> Browse the{" "}
+            <Link
+              href="/projects"
+              className="underline underline-offset-4 hover:text-slate-900 dark:hover:text-white"
+            >
+              projects
+            </Link>{" "}
+            or read the{" "}
+            <Link
+              href="/blog"
+              className="underline underline-offset-4 hover:text-slate-900 dark:hover:text-white"
+            >
+              blog
+            </Link>
+            .
           </p>
           <p>
-            Outside of tech, I care about entrepreneurship, philosophy, and history.
-            <span className="hidden md:block" />
-            {" "}I play tennis, listen to music, and used to host events.
+            Outside of tech, I care about entrepreneurship, philosophy, and
+            history.
+            <span className="hidden md:block" /> I play tennis, listen to music,
+            and used to host events.
           </p>
         </div>
 
@@ -211,9 +227,15 @@ export default async function Home() {
               <span className="absolute left-2 top-[22px] inline-flex h-4 w-4 -translate-x-1/2 items-center justify-center rounded-full bg-white ring-1 ring-slate-300 dark:bg-slate-950 dark:ring-slate-600">
                 <span className="h-1.5 w-1.5 rounded-full bg-slate-400 transition-colors group-hover:bg-slate-600 dark:bg-slate-500 dark:group-hover:bg-slate-300" />
               </span>
-              <h3 className="text-[15px] font-medium text-slate-900 dark:text-white">{item.role}</h3>
-              <p className="mt-1 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">{item.period}</p>
-              <p className="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-300">{item.summary}</p>
+              <h3 className="text-[15px] font-medium text-slate-900 dark:text-white">
+                {item.role}
+              </h3>
+              <p className="mt-1 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">
+                {item.period}
+              </p>
+              <p className="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-300">
+                {item.summary}
+              </p>
             </article>
           ))}
         </div>
@@ -233,12 +255,18 @@ export default async function Home() {
               <span className="absolute left-2 top-[22px] inline-flex h-4 w-4 -translate-x-1/2 items-center justify-center rounded-full bg-white ring-1 ring-slate-300 dark:bg-slate-950 dark:ring-slate-600">
                 <span className="h-1.5 w-1.5 rounded-full bg-slate-400 transition-colors group-hover:bg-slate-600 dark:bg-slate-500 dark:group-hover:bg-slate-300" />
               </span>
-              <h3 className="text-[15px] font-medium text-slate-900 dark:text-white">{item.degree}</h3>
+              <h3 className="text-[15px] font-medium text-slate-900 dark:text-white">
+                {item.degree}
+              </h3>
               <p className="mt-1 text-sm font-medium text-slate-700 dark:text-slate-300">
                 {item.school} (GPA: {item.gpa})
               </p>
-              <p className="mt-1 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">{item.period}</p>
-              <p className="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-300">{item.summary}</p>
+              <p className="mt-1 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">
+                {item.period}
+              </p>
+              <p className="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-300">
+                {item.summary}
+              </p>
             </article>
           ))}
         </div>
@@ -249,7 +277,9 @@ export default async function Home() {
           <summary className="cursor-pointer list-none text-sm font-semibold uppercase tracking-[0.14em] text-slate-500 marker:content-none dark:text-slate-400">
             <span className="flex items-center justify-between">
               Skills
-              <span className="text-xs text-slate-400 transition-transform group-open:rotate-45 dark:text-slate-500">+</span>
+              <span className="text-xs text-slate-400 transition-transform group-open:rotate-45 dark:text-slate-500">
+                +
+              </span>
             </span>
           </summary>
           <div className="mt-4 flex flex-wrap gap-2">
@@ -268,7 +298,9 @@ export default async function Home() {
           <summary className="cursor-pointer list-none text-sm font-semibold uppercase tracking-[0.14em] text-slate-500 marker:content-none dark:text-slate-400">
             <span className="flex items-center justify-between">
               Core Strengths
-              <span className="text-xs text-slate-400 transition-transform group-open:rotate-45 dark:text-slate-500">+</span>
+              <span className="text-xs text-slate-400 transition-transform group-open:rotate-45 dark:text-slate-500">
+                +
+              </span>
             </span>
           </summary>
           <div className="mt-4 flex flex-wrap gap-2">
@@ -284,10 +316,10 @@ export default async function Home() {
         </details>
 
         <p className="mt-3 text-xs text-slate-500 dark:text-slate-400">
-          Note: These skill groups are AI-generated and inferred from the full portfolio content.
+          Note: These skill groups are AI-generated and inferred from the full
+          portfolio content.
         </p>
       </section>
-
     </main>
   );
 }

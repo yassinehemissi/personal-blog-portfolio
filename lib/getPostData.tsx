@@ -64,7 +64,7 @@ async function readDataFromDirectory<T>(dirPath: string): Promise<T[]> {
         const filePath = path.join(fullPath, file);
         const fileContent = fs.readFileSync(filePath, "utf8");
         return JSON.parse(fileContent);
-      })
+      }),
     );
 
     return data;
@@ -77,7 +77,7 @@ async function readDataFromDirectory<T>(dirPath: string): Promise<T[]> {
 // Get all blog posts (cached for performance)
 export const getAllBlogPosts = cache(async (): Promise<BlogPost[]> => {
   return (await readDataFromDirectory<BlogPost>("data/blogs")).sort(
-    (a, b) => new Date(b.post_date).getTime() - new Date(a.post_date).getTime()
+    (a, b) => new Date(b.post_date).getTime() - new Date(a.post_date).getTime(),
   );
 });
 
@@ -86,28 +86,26 @@ export const getBlogPost = cache(
   async (slug: string): Promise<BlogPost | null> => {
     const posts = await getAllBlogPosts();
     return posts.find((post) => post.slug === slug) || null;
-  }
+  },
 );
 
 // Get all notes (cached for performance)
 export const getAllNotes = cache(async (): Promise<Note[]> => {
   return (await readDataFromDirectory<Note>("data/notes")).sort(
-    (a, b) => new Date(b.post_date).getTime() - new Date(a.post_date).getTime()
+    (a, b) => new Date(b.post_date).getTime() - new Date(a.post_date).getTime(),
   );
 });
 
 // Get a specific note by slug
-export const getNote = cache(
-  async (slug: string): Promise<Note | null> => {
-    const notes = await getAllNotes();
-    return notes.find((note) => note.slug === slug) || null;
-  }
-);
+export const getNote = cache(async (slug: string): Promise<Note | null> => {
+  const notes = await getAllNotes();
+  return notes.find((note) => note.slug === slug) || null;
+});
 
 // Get all projects (cached for performance)
 export const getAllProjects = cache(async (): Promise<Project[]> => {
   return (await readDataFromDirectory<Project>("data/projects")).sort(
-    (a, b) => new Date(b.post_date).getTime() - new Date(a.post_date).getTime()
+    (a, b) => new Date(b.post_date).getTime() - new Date(a.post_date).getTime(),
   );
 });
 
@@ -116,7 +114,7 @@ export const getProject = cache(
   async (slug: string): Promise<Project | null> => {
     const projects = await getAllProjects();
     return projects.find((project) => project.slug === slug) || null;
-  }
+  },
 );
 
 // Get unique categories from blog posts

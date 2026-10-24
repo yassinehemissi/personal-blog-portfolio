@@ -42,20 +42,32 @@ function getTierClasses(tier: Project["tier"]) {
   }
 }
 
-export default function ProjectsClient({ projects, categories, initialPage = 1 }: ProjectsClientProps) {
+export default function ProjectsClient({
+  projects,
+  categories,
+  initialPage = 1,
+}: ProjectsClientProps) {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedTier, setSelectedTier] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(initialPage);
 
   const allCategories = ["All", ...categories];
-  const allTiers = ["All", ...TIER_ORDER.filter((tier) => projects.some((project) => project.tier === tier))];
+  const allTiers = [
+    "All",
+    ...TIER_ORDER.filter((tier) =>
+      projects.some((project) => project.tier === tier),
+    ),
+  ];
 
   // Filter projects based on category and search
   const filteredProjects = useMemo(() => {
     return projects.filter((project) => {
-      const matchesCategory = selectedCategory === "All" || project.categories.includes(selectedCategory);
-      const matchesTier = selectedTier === "All" || project.tier === selectedTier;
+      const matchesCategory =
+        selectedCategory === "All" ||
+        project.categories.includes(selectedCategory);
+      const matchesTier =
+        selectedTier === "All" || project.tier === selectedTier;
       const matchesSearch =
         project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         project.description.toLowerCase().includes(searchQuery.toLowerCase());
@@ -65,7 +77,10 @@ export default function ProjectsClient({ projects, categories, initialPage = 1 }
 
   // Calculate pagination
   const totalPages = Math.ceil(filteredProjects.length / PROJECTS_PER_PAGE);
-  const safeCurrentPage = Math.max(1, Math.min(currentPage, Math.max(1, totalPages)));
+  const safeCurrentPage = Math.max(
+    1,
+    Math.min(currentPage, Math.max(1, totalPages)),
+  );
   const startIndex = (safeCurrentPage - 1) * PROJECTS_PER_PAGE;
   const endIndex = startIndex + PROJECTS_PER_PAGE;
   const currentProjects = filteredProjects.slice(startIndex, endIndex);
@@ -104,7 +119,9 @@ export default function ProjectsClient({ projects, categories, initialPage = 1 }
           <div className="sticky top-24 z-40 pt-12">
             {/* Title */}
             <div className="mb-8">
-              <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">Projects</h1>
+              <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">
+                Projects
+              </h1>
               <p className="text-slate-600 dark:text-slate-400">
                 Selected work in AI, data science, and software engineering.
               </p>
@@ -147,7 +164,8 @@ export default function ProjectsClient({ projects, categories, initialPage = 1 }
             {filteredProjects.length > 0 && (
               <div className="mt-8 pt-8 border-t border-slate-200 dark:border-slate-800">
                 <p className="text-sm text-slate-600 dark:text-slate-400">
-                  {filteredProjects.length} project{filteredProjects.length !== 1 ? 's' : ''} found
+                  {filteredProjects.length} project
+                  {filteredProjects.length !== 1 ? "s" : ""} found
                 </p>
               </div>
             )}
@@ -191,7 +209,10 @@ export default function ProjectsClient({ projects, categories, initialPage = 1 }
 
           <div className="space-y-8">
             {currentProjects.map((project) => (
-              <div key={project.slug} className="pb-8 border-b border-slate-200 dark:border-slate-800 last:border-b-0">
+              <div
+                key={project.slug}
+                className="pb-8 border-b border-slate-200 dark:border-slate-800 last:border-b-0"
+              >
                 <Link href={`/projects/${project.slug}`} className="group">
                   <div className="mb-3 flex flex-wrap items-start gap-3">
                     <h2 className="text-2xl font-bold text-slate-900 dark:text-white group-hover:text-slate-700 dark:group-hover:text-slate-200 transition-colors">
@@ -207,7 +228,9 @@ export default function ProjectsClient({ projects, categories, initialPage = 1 }
                   </div>
                 </Link>
 
-                <p className="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">{project.description}</p>
+                <p className="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
+                  {project.description}
+                </p>
 
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.map((tech) => (
@@ -225,7 +248,9 @@ export default function ProjectsClient({ projects, categories, initialPage = 1 }
                   <span>•</span>
                   <div className="flex flex-wrap gap-2">
                     {project.categories.map((category) => (
-                      <span key={category} className="font-medium">{category}</span>
+                      <span key={category} className="font-medium">
+                        {category}
+                      </span>
                     ))}
                   </div>
                 </div>
@@ -271,7 +296,9 @@ export default function ProjectsClient({ projects, categories, initialPage = 1 }
               currentPage={safeCurrentPage}
               totalPages={totalPages}
               onPageChange={setCurrentPage}
-              getPageHref={(page) => (page <= 1 ? "/projects" : `/projects?page=${page}`)}
+              getPageHref={(page) =>
+                page <= 1 ? "/projects" : `/projects?page=${page}`
+              }
               totalItems={filteredProjects.length}
               itemsPerPage={PROJECTS_PER_PAGE}
             />

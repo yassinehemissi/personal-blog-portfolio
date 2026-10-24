@@ -1,3 +1,3 @@
 export default function BlogPostLoading() {
-  return null
+  return null;
 }

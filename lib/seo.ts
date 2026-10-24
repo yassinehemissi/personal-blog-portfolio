@@ -49,9 +49,10 @@ export function parseContentDate(value?: string): Date | undefined {
 
 // A few entries have an update_date older than their post_date; take the later one.
 export function getLastModified(postDate?: string, updateDate?: string) {
-  const dates = [parseContentDate(postDate), parseContentDate(updateDate)].filter(
-    (date): date is Date => Boolean(date)
-  );
+  const dates = [
+    parseContentDate(postDate),
+    parseContentDate(updateDate),
+  ].filter((date): date is Date => Boolean(date));
 
   if (dates.length === 0) {
     return new Date();

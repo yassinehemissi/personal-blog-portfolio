@@ -19,7 +19,7 @@ import type { GenerateClassicPageOptions } from "./types";
  */
 export function generateClassicPage(
   folder: string,
-  _options: GenerateClassicPageOptions = {}
+  _options: GenerateClassicPageOptions = {},
 ) {
   async function ClassicPage() {
     const page = await getClassicPage(folder);
@@ -68,7 +68,7 @@ export function generateClassicPage(
  */
 export async function generateClassicMetadata(
   folder: string,
-  options: GenerateClassicPageOptions = {}
+  options: GenerateClassicPageOptions = {},
 ): Promise<Metadata> {
   const page = await getClassicPage(folder);
 

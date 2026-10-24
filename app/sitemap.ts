@@ -4,10 +4,15 @@ import { getLastModified, getSiteUrl } from "@/lib/seo";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const siteUrl = getSiteUrl();
-  const [posts, projects] = await Promise.all([getAllBlogPosts(), getAllProjects()]);
+  const [posts, projects] = await Promise.all([
+    getAllBlogPosts(),
+    getAllProjects(),
+  ]);
 
   const newest = (items: Array<{ post_date: string; update_date: string }>) =>
-    items.length > 0 ? getLastModified(items[0].post_date, items[0].update_date) : new Date();
+    items.length > 0
+      ? getLastModified(items[0].post_date, items[0].update_date)
+      : new Date();
 
   const staticRoutes: MetadataRoute.Sitemap = [
     {

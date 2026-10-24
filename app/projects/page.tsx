@@ -23,7 +23,8 @@ export const metadata: Metadata = {
 };
 
 interface ProjectsPageProps {
-  searchParams?: { page?: string | string[] } | Promise<{ page?: string | string[] }>;
+  searchParams?:
+    { page?: string | string[] } | Promise<{ page?: string | string[] }>;
 }
 
 function parsePageParam(pageParam: string | string[] | undefined): number {
@@ -32,12 +33,22 @@ function parsePageParam(pageParam: string | string[] | undefined): number {
   return Number.isFinite(parsed) && parsed > 0 ? parsed : 1;
 }
 
-export default async function ProjectsPage({ searchParams }: ProjectsPageProps) {
+export default async function ProjectsPage({
+  searchParams,
+}: ProjectsPageProps) {
   // Get data from JSON files on the server
   const projects = await getAllProjects();
   const categories = await getProjectCategories();
-  const resolvedSearchParams = searchParams ? await Promise.resolve(searchParams) : undefined;
+  const resolvedSearchParams = searchParams
+    ? await Promise.resolve(searchParams)
+    : undefined;
   const initialPage = parsePageParam(resolvedSearchParams?.page);
 
-  return <ProjectsClient projects={projects} categories={categories} initialPage={initialPage} />;
+  return (
+    <ProjectsClient
+      projects={projects}
+      categories={categories}
+      initialPage={initialPage}
+    />
+  );
 }

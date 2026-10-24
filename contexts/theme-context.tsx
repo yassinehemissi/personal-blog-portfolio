@@ -36,7 +36,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   // themeInitScript has already applied the class; sync React state to it.
   useEffect(() => {
     setTheme(
-      document.documentElement.classList.contains("dark") ? "dark" : "light"
+      document.documentElement.classList.contains("dark") ? "dark" : "light",
     );
   }, []);
 

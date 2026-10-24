@@ -25,7 +25,11 @@ interface BlogClientProps {
 
 const POSTS_PER_PAGE = 5;
 
-export default function BlogClient({ blogPosts, categories, initialPage = 1 }: BlogClientProps) {
+export default function BlogClient({
+  blogPosts,
+  categories,
+  initialPage = 1,
+}: BlogClientProps) {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(initialPage);
@@ -35,7 +39,9 @@ export default function BlogClient({ blogPosts, categories, initialPage = 1 }: B
   // Filter posts based on category and search
   const filteredPosts = useMemo(() => {
     return blogPosts.filter((post) => {
-      const matchesCategory = selectedCategory === "All" || post.categories.includes(selectedCategory);
+      const matchesCategory =
+        selectedCategory === "All" ||
+        post.categories.includes(selectedCategory);
       const matchesSearch =
         post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
@@ -45,7 +51,10 @@ export default function BlogClient({ blogPosts, categories, initialPage = 1 }: B
 
   // Calculate pagination
   const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
-  const safeCurrentPage = Math.max(1, Math.min(currentPage, Math.max(1, totalPages)));
+  const safeCurrentPage = Math.max(
+    1,
+    Math.min(currentPage, Math.max(1, totalPages)),
+  );
   const startIndex = (safeCurrentPage - 1) * POSTS_PER_PAGE;
   const endIndex = startIndex + POSTS_PER_PAGE;
   const currentPosts = filteredPosts.slice(startIndex, endIndex);
@@ -74,10 +83,10 @@ export default function BlogClient({ blogPosts, categories, initialPage = 1 }: B
   // Format date for display
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { 
-      year: 'numeric', 
-      month: 'short', 
-      day: 'numeric' 
+    return date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
     });
   };
 
@@ -89,8 +98,12 @@ export default function BlogClient({ blogPosts, categories, initialPage = 1 }: B
           <div className="sticky top-24 z-40 pt-12">
             {/* Title */}
             <div className="mb-8">
-              <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">Blog</h1>
-              <p className="text-slate-600 dark:text-slate-400">Thoughts on AI, engineering, and life.</p>
+              <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">
+                Blog
+              </h1>
+              <p className="text-slate-600 dark:text-slate-400">
+                Thoughts on AI, engineering, and life.
+              </p>
             </div>
 
             {/* Search */}
@@ -130,7 +143,8 @@ export default function BlogClient({ blogPosts, categories, initialPage = 1 }: B
             {filteredPosts.length > 0 && (
               <div className="mt-8 pt-8 border-t border-slate-200 dark:border-slate-800">
                 <p className="text-sm text-slate-600 dark:text-slate-400">
-                  {filteredPosts.length} post{filteredPosts.length !== 1 ? 's' : ''} found
+                  {filteredPosts.length} post
+                  {filteredPosts.length !== 1 ? "s" : ""} found
                 </p>
               </div>
             )}
@@ -141,9 +155,15 @@ export default function BlogClient({ blogPosts, categories, initialPage = 1 }: B
         <div className="flex-1 max-w-2xl pt-12">
           <div className="space-y-8">
             {currentPosts.map((post) => (
-              <article key={post.slug} className="pb-8 border-b border-slate-200 dark:border-slate-800 last:border-b-0">
+              <article
+                key={post.slug}
+                className="pb-8 border-b border-slate-200 dark:border-slate-800 last:border-b-0"
+              >
                 {post.cover && (
-                  <Link href={`/blog/${post.slug}`} className="group mb-5 block">
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="group mb-5 block"
+                  >
                     <img
                       src={post.cover}
                       alt={post.title}
@@ -157,14 +177,19 @@ export default function BlogClient({ blogPosts, categories, initialPage = 1 }: B
                   </h2>
                 </Link>
 
-                <p className="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">{post.excerpt}</p>
+                <p className="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
+                  {post.excerpt}
+                </p>
 
                 <div className="flex flex-wrap items-center gap-4 text-sm text-slate-600 dark:text-slate-400">
                   <span>{formatDate(post.post_date)}</span>
                   <span>•</span>
                   <div className="flex flex-wrap gap-2">
                     {post.categories.map((category) => (
-                      <span key={category} className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-300">
+                      <span
+                        key={category}
+                        className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-300"
+                      >
                         {category}
                       </span>
                     ))}
@@ -190,7 +215,9 @@ export default function BlogClient({ blogPosts, categories, initialPage = 1 }: B
               currentPage={safeCurrentPage}
               totalPages={totalPages}
               onPageChange={setCurrentPage}
-              getPageHref={(page) => (page <= 1 ? "/blog" : `/blog?page=${page}`)}
+              getPageHref={(page) =>
+                page <= 1 ? "/blog" : `/blog?page=${page}`
+              }
               totalItems={filteredPosts.length}
               itemsPerPage={POSTS_PER_PAGE}
             />

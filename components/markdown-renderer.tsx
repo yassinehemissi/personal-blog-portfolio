@@ -40,7 +40,8 @@ function getHtmlAttribute(tag: string, attribute: string) {
 
 function splitMarkdownAndEmbeds(content: string) {
   const segments: MarkdownSegment[] = [];
-  const pattern = /(\$\$[\s\S]+?\$\$|<object\b[\s\S]*?<\/object>|<video\b[\s\S]*?<\/video>)/gi;
+  const pattern =
+    /(\$\$[\s\S]+?\$\$|<object\b[\s\S]*?<\/object>|<video\b[\s\S]*?<\/video>)/gi;
   let lastIndex = 0;
 
   for (const match of content.matchAll(pattern)) {
@@ -160,7 +161,9 @@ function renderInlineMathNode(node: ReactNode, keyPrefix = "math"): ReactNode {
   }
 
   if (Array.isArray(node)) {
-    return node.map((child, index) => renderInlineMathNode(child, `${keyPrefix}-${index}`));
+    return node.map((child, index) =>
+      renderInlineMathNode(child, `${keyPrefix}-${index}`),
+    );
   }
 
   if (isValidElement(node)) {
@@ -395,7 +398,7 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
         </td>
       ),
     }),
-    [isDark]
+    [isDark],
   );
 
   return (

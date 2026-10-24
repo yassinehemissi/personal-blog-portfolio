@@ -29,7 +29,11 @@ export default function Pagination({
     const range = [];
     const rangeWithDots = [];
 
-    for (let i = Math.max(2, currentPage - delta); i <= Math.min(totalPages - 1, currentPage + delta); i++) {
+    for (
+      let i = Math.max(2, currentPage - delta);
+      i <= Math.min(totalPages - 1, currentPage + delta);
+      i++
+    ) {
       range.push(i);
     }
 
@@ -94,7 +98,9 @@ export default function Pagination({
           {visiblePages.map((page, index) => (
             <div key={index}>
               {page === "..." ? (
-                <span className="px-3 py-2 text-slate-400 dark:text-slate-500">...</span>
+                <span className="px-3 py-2 text-slate-400 dark:text-slate-500">
+                  ...
+                </span>
               ) : getPageHref ? (
                 <Link
                   href={getPageHref(page as number)}
@@ -127,7 +133,9 @@ export default function Pagination({
         {getPageHref ? (
           <Link
             href={getPageHref(nextPage)}
-            onClick={currentPage === totalPages ? (e) => e.preventDefault() : undefined}
+            onClick={
+              currentPage === totalPages ? (e) => e.preventDefault() : undefined
+            }
             aria-disabled={currentPage === totalPages}
             className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 aria-disabled:opacity-50 aria-disabled:cursor-not-allowed transition-colors"
           >

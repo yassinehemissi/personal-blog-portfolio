@@ -41,7 +41,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: ProjectPageProps): Promise<Metadata> {
   const { slug } = await params;
   const project = await getProject(slug);
 
@@ -91,10 +93,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   // Format date for display
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
+    return date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
     });
   };
 
@@ -116,7 +118,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       mainEntityOfPage: canonical,
       inLanguage: "en",
       datePublished: (published ?? new Date()).toISOString(),
-      dateModified: getLastModified(project.post_date, project.update_date).toISOString(),
+      dateModified: getLastModified(
+        project.post_date,
+        project.update_date,
+      ).toISOString(),
       keywords: [...project.categories, ...project.technologies].join(", "),
       image: [absoluteUrl(cover)],
       author: { "@type": "Person", name: project.author, url: siteUrl },
@@ -129,8 +134,18 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       "@type": "BreadcrumbList",
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
-        { "@type": "ListItem", position: 2, name: "Projects", item: `${siteUrl}/projects` },
-        { "@type": "ListItem", position: 3, name: project.title, item: canonical },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Projects",
+          item: `${siteUrl}/projects`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: project.title,
+          item: canonical,
+        },
       ],
     },
   ];
@@ -165,7 +180,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <p className="text-xl text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
             {project.description}
           </p>
-          
+
           {/* Project Meta */}
           <div className="flex flex-wrap items-center gap-4 text-sm text-slate-600 dark:text-slate-400 mb-6">
             <span>{project.year}</span>
@@ -178,7 +193,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           {/* Categories */}
           <div className="flex flex-wrap gap-2 mb-6">
             {project.categories.map((category) => (
-              <span key={category} className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-300 text-sm">
+              <span
+                key={category}
+                className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-300 text-sm"
+              >
                 {category}
               </span>
             ))}

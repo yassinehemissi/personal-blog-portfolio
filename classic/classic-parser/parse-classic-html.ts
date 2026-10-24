@@ -41,7 +41,7 @@ function isUsableUrl(value: string): boolean {
 
 function extractHead(
   source: string,
-  assets: ClassicHeadAssets
+  assets: ClassicHeadAssets,
 ): { title?: string; description?: string } {
   const head = parse(source).querySelector("head");
 
@@ -170,8 +170,8 @@ function extractAttrValue(attrs: string, name: string): string | undefined {
   const match = attrs.match(
     new RegExp(
       `(?:^|\\s)${name}\\s*=\\s*(?:"([^"]*)"|'([^']*)'|([^\\s>]+))`,
-      "i"
-    )
+      "i",
+    ),
   );
 
   if (!match) {
@@ -189,7 +189,7 @@ function hasAttrFlag(attrs: string, name: string): boolean {
 
 function extractScriptsAndStylesheets(
   fragment: string,
-  assets: ClassicHeadAssets
+  assets: ClassicHeadAssets,
 ): string {
   let html = fragment.replace(
     SCRIPT_BLOCK_PATTERN,
@@ -225,7 +225,7 @@ function extractScriptsAndStylesheets(
       // Scripts must not stay in the fragment: innerHTML-injected
       // scripts never execute, and the runner re-injects each one.
       return "";
-    }
+    },
   );
 
   html = html.replace(LINK_TAG_PATTERN, (tag) => {
@@ -250,7 +250,7 @@ function extractScriptsAndStylesheets(
 
 function collectRelativeUrls(
   fragment: string,
-  assets: ClassicHeadAssets
+  assets: ClassicHeadAssets,
 ): string[] {
   const urls: string[] = [];
 
@@ -281,7 +281,11 @@ function collectRelativeUrls(
 }
 
 export function parseClassicHtml(source: string): ParsedClassicHtml {
-  const assets: ClassicHeadAssets = { stylesheets: [], styles: [], scripts: [] };
+  const assets: ClassicHeadAssets = {
+    stylesheets: [],
+    styles: [],
+    scripts: [],
+  };
   const { title, description } = extractHead(source, assets);
 
   let fragment = sliceBodyFragment(source);

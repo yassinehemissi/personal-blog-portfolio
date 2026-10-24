@@ -1,0 +1,14 @@
+node_modules/
+.next/
+out/
+build/
+coverage/
+.vercel/
+next-env.d.ts
+*.tsbuildinfo
+pnpm-lock.yaml
+
+# Published content and static assets
+data/
+public/
+*.md

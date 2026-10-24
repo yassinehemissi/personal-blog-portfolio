@@ -67,7 +67,6 @@ export function HomeCarousels({
               </Link>
             ))}
           </div>
-
         </div>
       </section>
 
@@ -112,7 +111,6 @@ export function HomeCarousels({
               </Link>
             ))}
           </div>
-
         </div>
       </section>
     </>

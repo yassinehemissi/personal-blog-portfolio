@@ -23,7 +23,8 @@ export const metadata: Metadata = {
 };
 
 interface BlogPageProps {
-  searchParams?: { page?: string | string[] } | Promise<{ page?: string | string[] }>;
+  searchParams?:
+    { page?: string | string[] } | Promise<{ page?: string | string[] }>;
 }
 
 function parsePageParam(pageParam: string | string[] | undefined): number {
@@ -36,8 +37,16 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
   // Get data from JSON files on the server
   const blogPosts = await getAllBlogPosts();
   const categories = await getBlogCategories();
-  const resolvedSearchParams = searchParams ? await Promise.resolve(searchParams) : undefined;
+  const resolvedSearchParams = searchParams
+    ? await Promise.resolve(searchParams)
+    : undefined;
   const initialPage = parsePageParam(resolvedSearchParams?.page);
 
-  return <BlogClient blogPosts={blogPosts} categories={categories} initialPage={initialPage} />;
+  return (
+    <BlogClient
+      blogPosts={blogPosts}
+      categories={categories}
+      initialPage={initialPage}
+    />
+  );
 }
