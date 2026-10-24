@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MarkdownRenderer } from "@/components/markdown-renderer";
+import { Fragment } from "react";
+import { BlogImageGallery } from "@/components/blog-image-gallery";
 import { getAllBlogPosts, getBlogPost } from "@/lib/getPostData";
 import {
   DEFAULT_OG_IMAGE,
@@ -48,6 +50,7 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
       title: post.title,
       description: post.excerpt,
       type: "article",
+      locale: post.language === "fr" ? "fr_FR" : "en_US",
       url: `/blog/${post.slug}`,
       publishedTime: post.post_date,
       modifiedTime: post.update_date,
@@ -76,7 +79,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
   // Format date for display
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { 
+    return date.toLocaleDateString(post.language === "fr" ? "fr-FR" : "en-US", {
       year: 'numeric', 
       month: 'long', 
       day: 'numeric' 
@@ -96,7 +99,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
       description: post.excerpt,
       url: canonical,
       mainEntityOfPage: canonical,
-      inLanguage: "en",
+      inLanguage: post.language ?? "en",
       datePublished: (published ?? new Date()).toISOString(),
       dateModified: getLastModified(post.post_date, post.update_date).toISOString(),
       keywords: post.categories.join(", "),
@@ -122,7 +125,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <article className="max-w-2xl mx-auto px-4 py-16 sm:py-24 bg-white dark:bg-slate-950" >
+      <article lang={post.language ?? "en"} className="max-w-2xl mx-auto px-4 py-16 sm:py-24 bg-white dark:bg-slate-950" >
         {post.cover && (
           <img
             src={post.cover}
@@ -137,7 +140,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
             href="/blog"
             className="text-primary hover:underline font-medium text-sm mb-4 inline-block"
           >
-            ← Back to blog
+            {post.language === "fr" ? "← Retour au blog" : "← Back to blog"}
           </Link>
           <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-balance">
             {post.title}
@@ -147,7 +150,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
             <span>·</span>
             <span>{post.readTime}</span>
             <span>·</span>
-            <span>By {post.author}</span>
+            <span>{post.language === "fr" ? "Par" : "By"} {post.author}</span>
           </div>
           <div className="flex flex-wrap gap-2 mb-6">
             {post.categories.map((category) => (
@@ -159,7 +162,12 @@ export default async function BlogPage({ params }: BlogPageProps) {
         </header>
 
         {/* Content */}
-        <MarkdownRenderer content={post.content} />
+        {post.content.split("<!-- gallery -->").map((content, index) => (
+          <Fragment key={index}>
+            {index > 0 && post.gallery && <BlogImageGallery gallery={post.gallery} />}
+            <MarkdownRenderer content={content} />
+          </Fragment>
+        ))}
       </article>
     </main>
   );

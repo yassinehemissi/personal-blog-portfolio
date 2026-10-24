@@ -1,8 +1,11 @@
 import fs from "fs";
 import path from "path";
 import { cache } from "react";
+import type { BlogGallery } from "@/components/blog-image-gallery";
 
 interface BlogPost {
+  language?: "en" | "fr";
+  gallery?: BlogGallery;
   slug: string;
   title: string;
   author: string;
